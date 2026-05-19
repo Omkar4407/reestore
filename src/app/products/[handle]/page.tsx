@@ -4,13 +4,13 @@ import {
   Star,
   ShieldCheck,
   Truck,
-  ChevronDown,
   Leaf,
 } from "lucide-react";
 
 import { shopifyFetch } from "@/lib/shopify";
 import { getProductQuery } from "@/lib/queries";
 import AddToCartButton from "@/components/cart/add-to-cart-button";
+import ProductTabs from "@/components/product/product-tabs";
 
 interface Props {
   params: Promise<{
@@ -48,11 +48,26 @@ export default async function ProductPage({
 
       <div className="max-w-[1600px] mx-auto px-4 md:px-6">
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 items-start">
-
+      <div
+  className="
+    grid
+    grid-cols-1
+    lg:grid-cols-2
+    gap-10
+    md:gap-16
+    items-stretch
+  "
+>
           {/* LEFT */}
-          <div className="lg:sticky lg:top-32">
-
+          <div
+  className="
+    lg:sticky
+    lg:top-32
+    h-full
+    flex
+    flex-col
+  "
+>
             <div className="space-y-4 md:space-y-6">
 
               {/* MAIN IMAGE */}
@@ -89,24 +104,139 @@ export default async function ProductPage({
                     </div>
                   ))}
               </div>
+              {/* DELIVERY CHECKER */}
+<div
+  className="
+    lg:sticky
+    lg:top-[650px]
+    mt-8
+    bg-[#f7fffd]
+    border
+    border-black/5
+    rounded-[32px]
+    p-6
+    shadow-[0_10px_30px_rgba(0,0,0,0.03)]
+  "
+>
+
+  {/* HEADER */}
+  <div className="mb-5">
+
+    <p className="text-sm font-semibold text-[var(--mint-dark)] mb-2">
+
+      Delivery Availability
+    </p>
+
+    <h3 className="text-2xl font-bold text-black">
+
+      Check delivery to your area
+    </h3>
+  </div>
+
+  {/* INPUT */}
+  <div className="flex gap-3">
+
+    <input
+      type="text"
+      placeholder="Enter Pincode"
+      className="
+        flex-1
+        h-14
+        rounded-full
+        border
+        border-black/5
+        bg-white
+        px-5
+        text-sm
+        outline-none
+        focus:border-[var(--forest)]
+      "
+    />
+
+    <button
+      className="
+        px-6
+        rounded-full
+        bg-[var(--forest)]
+        text-white
+        text-sm
+        font-semibold
+        hover:opacity-90
+        transition
+      "
+    >
+
+      Check
+    </button>
+  </div>
+
+  {/* INFO */}
+  <div
+    className="
+      mt-5
+      rounded-[24px]
+      bg-[var(--sage)]
+      p-4
+    "
+  >
+
+    <div className="flex items-start gap-3">
+
+      <div
+        className="
+          w-10
+          h-10
+          rounded-full
+          bg-white
+          flex
+          items-center
+          justify-center
+          shrink-0
+        "
+      >
+
+        🚚
+      </div>
+
+      <div>
+
+        <p className="font-semibold text-[var(--forest-dark)] mb-1">
+
+          Fast delivery available
+        </p>
+
+        <p className="text-sm text-black/60 leading-6">
+
+          Most metro cities delivered within 2-5 business days.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
             </div>
           </div>
 
           {/* RIGHT */}
-          <div>
-
+          <div
+  className="
+    h-full
+    flex
+    flex-col
+    gap-8
+  "
+>
             {/* TAG */}
             <div className="inline-flex items-center justify-center bg-[#d3f7f0] text-[#0d5c4d] px-4 py-1.5 md:px-5 md:py-2 rounded-full text-sm font-semibold mb-4 md:mb-6">
               Premium Wellness
             </div>
 
             {/* TITLE */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] mb-5 md:mb-8">
+            <h1 className="text-3xl md:text-4xl sm:text-4xl lg:text-1xl font-bold tracking-tight leading-[1.05] mb-5 md:mb-8">
               {product.title}
             </h1>
 
             {/* RATING */}
-            <div className="flex items-center gap-2 mb-5 md:mb-8">
+            <div className="flex items-center gap-2 mb-5 text-sm md:text-base">
               <div className="flex items-center gap-1">
                 {[1,2,3,4,5].map((i) => (
                   <Star key={i} className="w-4 h-4 md:w-5 md:h-5 fill-yellow-400 text-yellow-400" />
@@ -119,7 +249,7 @@ export default async function ProductPage({
 
             {/* PRICE */}
             <div className="flex items-center gap-3 md:gap-4 mb-7 md:mb-10">
-              <span className="text-4xl md:text-5xl font-bold">
+              <span className="text-4xl md:text-1xl font-bold">
                 ₹ {Math.round(Number(price))}
               </span>
 
@@ -129,6 +259,10 @@ export default async function ProductPage({
                 </span>
               )}
             </div>
+
+            <ProductTabs
+              description={product.descriptionHtml}
+            />
 
             {/* BENEFITS */}
             <div className="flex flex-wrap gap-2 md:gap-3 mb-7 md:mb-10">
@@ -143,13 +277,6 @@ export default async function ProductPage({
               </div>
             </div>
 
-            {/* DESCRIPTION */}
-            <div
-              className="text-black/65 text-base md:text-lg leading-7 md:leading-8 mb-8 md:mb-12"
-              dangerouslySetInnerHTML={{
-                __html: product.descriptionHtml,
-              }}
-            />
 
             {/* CTA */}
             <div className="space-y-4 md:space-y-5 mb-10 md:mb-14">
@@ -158,81 +285,159 @@ export default async function ProductPage({
                 <AddToCartButton variantId={variant.id} />
               )}
 
-              <button className="w-full border border-black/10 rounded-full py-4 md:py-6 text-lg md:text-xl font-semibold hover:bg-black hover:text-white transition">
+              <button className="w-full border bg-black text-white border-black/10 rounded-full py-4 md:py-6 text-lg md:text-xl font-semibold hover:bg-white hover:text-black hover:border-black transition">
                 Buy Now
               </button>
-            </div>
-
-            {/* FEATURES */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
-
-              <div className="bg-[#f7fffd] rounded-[24px] md:rounded-[28px] p-5 md:p-6 border border-black/5">
-                <ShieldCheck className="w-6 h-6 md:w-7 md:h-7 text-[#00b894] mb-3 md:mb-4" />
-                <h3 className="font-semibold mb-1 md:mb-2">Quality Checked</h3>
-                <p className="text-black/50 text-sm leading-6">
-                  Premium ingredients & strict compliance standards.
-                </p>
-              </div>
-
-              <div className="bg-[#f7fffd] rounded-[24px] md:rounded-[28px] p-5 md:p-6 border border-black/5">
-                <Truck className="w-6 h-6 md:w-7 md:h-7 text-[#00b894] mb-3 md:mb-4" />
-                <h3 className="font-semibold mb-1 md:mb-2">Fast Delivery</h3>
-                <p className="text-black/50 text-sm leading-6">
-                  Reliable shipping across India.
-                </p>
-              </div>
-
-              <div className="bg-[#f7fffd] rounded-[24px] md:rounded-[28px] p-5 md:p-6 border border-black/5">
-                <Leaf className="w-6 h-6 md:w-7 md:h-7 text-[#00b894] mb-3 md:mb-4" />
-                <h3 className="font-semibold mb-1 md:mb-2">Wellness Focused</h3>
-                <p className="text-black/50 text-sm leading-6">
-                  Designed for modern healthy lifestyles.
-                </p>
-              </div>
-            </div>
-
-            {/* PRODUCT DETAILS ACCORDIONS */}
-            <div className="mt-14 md:mt-20 border-t border-black/10">
-
-              <details className="group border-b border-black/10 py-5 md:py-7">
-                <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <h3 className="text-lg md:text-2xl font-semibold">
-                    Ingredients
-                  </h3>
-                  <ChevronDown className="w-5 h-5 md:w-6 md:h-6 transition group-open:rotate-180" />
-                </summary>
-                <div className="pt-5 text-black/60 leading-7 md:leading-8 text-base md:text-lg max-w-[90%]">
-                  Ingredients information will be updated soon. Future Shopify metafields can dynamically render ingredient lists here.
-                </div>
-              </details>
-
-              <details className="group border-b border-black/10 py-5 md:py-7">
-                <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <h3 className="text-lg md:text-2xl font-semibold">
-                    Allergen Information
-                  </h3>
-                  <ChevronDown className="w-5 h-5 md:w-6 md:h-6 transition group-open:rotate-180" />
-                </summary>
-                <div className="pt-5 text-black/60 leading-7 md:leading-8 text-base md:text-lg max-w-[90%]">
-                  Allergen and dietary information will be added soon.
-                </div>
-              </details>
-
-              <details className="group border-b border-black/10 py-5 md:py-7">
-                <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <h3 className="text-lg md:text-2xl font-semibold">
-                    Additional Information
-                  </h3>
-                  <ChevronDown className="w-5 h-5 md:w-6 md:h-6 transition group-open:rotate-180" />
-                </summary>
-                <div className="pt-5 text-black/60 leading-7 md:leading-8 text-base md:text-lg max-w-[90%]">
-                  Storage instructions, usage guidance and nutritional insights will appear here.
-                </div>
-              </details>
             </div>
           </div>
         </div>
       </div>
+{/* FULL WIDTH FEATURES */}
+<div
+  className="
+    mt-12
+    grid
+    grid-cols-1
+    md:grid-cols-3
+    gap-4
+  "
+>
+
+  {/* QUALITY */}
+  <div
+    className="
+      flex
+      items-center
+      gap-4
+      bg-[#f7fffd]
+      border
+      border-black/5
+      rounded-[26px]
+      px-6
+      py-5
+    "
+  >
+
+    <div
+      className="
+        w-14
+        h-14
+        rounded-2xl
+        bg-[var(--sage)]
+        flex
+        items-center
+        justify-center
+        shrink-0
+      "
+    >
+
+      <ShieldCheck className="w-7 h-7 text-[var(--mint-dark)]" />
+    </div>
+
+    <div>
+
+      <h3 className="font-semibold mb-1">
+
+        Quality Checked
+      </h3>
+
+      <p className="text-black/50 text-sm leading-6">
+
+        Premium ingredients & strict compliance standards.
+      </p>
+    </div>
+  </div>
+
+  {/* DELIVERY */}
+  <div
+    className="
+      flex
+      items-center
+      gap-4
+      bg-[#f7fffd]
+      border
+      border-black/5
+      rounded-[26px]
+      px-6
+      py-5
+    "
+  >
+
+    <div
+      className="
+        w-14
+        h-14
+        rounded-2xl
+        bg-[var(--sage)]
+        flex
+        items-center
+        justify-center
+        shrink-0
+      "
+    >
+
+      <Truck className="w-7 h-7 text-[var(--mint-dark)]" />
+    </div>
+
+    <div>
+
+      <h3 className="font-semibold mb-1">
+
+        Fast Delivery
+      </h3>
+
+      <p className="text-black/50 text-sm leading-6">
+
+        Reliable shipping across India.
+      </p>
+    </div>
+  </div>
+
+  {/* WELLNESS */}
+  <div
+    className="
+      flex
+      items-center
+      gap-4
+      bg-[#f7fffd]
+      border
+      border-black/5
+      rounded-[26px]
+      px-6
+      py-5
+    "
+  >
+
+    <div
+      className="
+        w-14
+        h-14
+        rounded-2xl
+        bg-[var(--sage)]
+        flex
+        items-center
+        justify-center
+        shrink-0
+      "
+    >
+
+      <Leaf className="w-7 h-7 text-[var(--mint-dark)]" />
+    </div>
+
+    <div>
+
+      <h3 className="font-semibold mb-1">
+
+        Wellness Focused
+      </h3>
+
+      <p className="text-black/50 text-sm leading-6">
+
+        Designed for modern healthy lifestyles.
+      </p>
+    </div>
+  </div>
+</div>
     </main>
   );
 }
