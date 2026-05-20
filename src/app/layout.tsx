@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className="bg-[#f7fffd] text-[#232323] overflow-x-hidden">
+      <body id="top" className="bg-[#f7fffd] text-[#232323] overflow-x-hidden">
 
         <Navbar />
 

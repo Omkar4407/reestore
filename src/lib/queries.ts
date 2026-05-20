@@ -433,3 +433,100 @@ query searchProducts($query: String!) {
   }
 }
 `;
+
+export const getBlogsQuery = `
+{
+  blogs(first: 1) {
+
+    edges {
+
+      node {
+
+        articles(first: 3) {
+
+          edges {
+
+            node {
+
+              title
+              handle
+              excerpt
+
+              image {
+                url
+              }
+
+              blog {
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
+export const getBlogArticleQuery = `
+query getArticle($handle: String!) {
+
+  articles(first: 1, query: $handle) {
+
+    edges {
+
+      node {
+
+        title
+        handle
+        contentHtml
+        excerpt
+        publishedAt
+
+        image {
+          url
+        }
+
+        blog {
+          title
+        }
+      }
+    }
+  }
+}
+`;
+
+export const getAllBlogsQuery = `
+{
+  blogs(first: 1) {
+
+    edges {
+
+      node {
+
+        articles(first: 50) {
+
+          edges {
+
+            node {
+
+              title
+              handle
+              excerpt
+              publishedAt
+
+              image {
+                url
+              }
+
+              blog {
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;

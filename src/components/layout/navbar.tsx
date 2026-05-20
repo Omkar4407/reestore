@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import QualityCompliancePage from "@/app/quality-compliance/page";
+import AboutUsPage from "@/app/about-us/page";
 
 import {
   ShoppingBag,
@@ -117,16 +119,16 @@ export default function Navbar() {
             <Link
               href="/"
               className="
-                relative
-                w-[130px]
-                h-[40px]
-                sm:w-[190px]
-                sm:h-[56px]
-                md:w-[220px]
-                md:h-[66px]
-                shrink-0
-                z-10
-              "
+  relative
+  w-[130px]
+  h-[40px]
+  sm:w-[150px]
+  sm:h-[46px]
+  md:w-[170px]
+  md:h-[52px]
+  shrink-0
+  z-10
+"
             >
 
               <Image
@@ -141,25 +143,25 @@ export default function Navbar() {
 
             {/* DESKTOP NAV */}
             <nav
-              className="
-                hidden
-                xl:flex
-                items-center
-                justify-evenly
-                flex-1
-                mx-6
-                2xl:mx-10
-                text-[13px]
-                2xl:text-sm
-                font-medium
-                whitespace-nowrap
-                min-w-0
-              "
-            >
+  className="
+    hidden
+    xl:flex
+    items-center
+    flex-1
+    mx-5
+    gap-5
+    2xl:gap-7
+    text-[13px]
+    2xl:text-sm
+    font-medium
+    whitespace-nowrap
+    min-w-0
+  "
+>
 
               <Link
                 href="/"
-                className="hover:text-[var(--forest-dark)] transition"
+                className="ml-auto hover:text-[var(--forest-dark)] transition"
               >
 
                 Home
@@ -167,7 +169,7 @@ export default function Navbar() {
 
               <Link
                 href="/"
-                className="hover:text-[var(--forest-dark)] transition"
+                className="ml-auto hover:text-[var(--forest-dark)] transition"
               >
 
                 Food Products
@@ -175,34 +177,34 @@ export default function Navbar() {
 
               <Link
                 href="/"
-                className="hover:text-[var(--forest-dark)] transition"
+                className="ml-auto hover:text-[var(--forest-dark)] transition"
               >
 
-                Supplements
+                Supplements & Nutraceuticals
               </Link>
 
               <Link
                 href="/"
-                className="hover:text-[var(--forest-dark)] transition"
+                className="ml-auto hover:text-[var(--forest-dark)] transition"
               >
 
-                Wellness
+                Gadgets
               </Link>
 
               <Link
-                href="/"
-                className="hover:text-[var(--forest-dark)] transition"
+                href="/about-us"
+                className="ml-auto hover:text-[var(--forest-dark)] transition"
               >
 
-                Blogs
+                About Us
               </Link>
 
               <Link
-                href="/contact-us"
-                className="hover:text-[var(--forest-dark)] transition"
+                href="/quality-compliance"
+                className="ml-auto hover:text-[var(--forest-dark)] transition"
               >
 
-                Contact
+                Quality & Compliance
               </Link>
             </nav>
 
@@ -290,6 +292,11 @@ export default function Navbar() {
                             <Link
                               href={`/products/${product.handle}`}
                               key={product.id}
+                              onClick={() => {
+                                setResults([]);
+                                setSearch("");
+                                setMobileMenu(false);
+                              }}
                               className="
                                 flex
                                 items-start
@@ -302,44 +309,60 @@ export default function Navbar() {
                             >
 
                               {/* IMAGE */}
-                              <div
-                                className="
-                                  relative
-                                  w-20
-                                  h-20
-                                  rounded-2xl
-                                  overflow-hidden
-                                  bg-[var(--sage)]
-                                  shrink-0
-                                "
-                              >
+<div
+  className="
+    relative
+    w-20
+    h-20
+    rounded-2xl
+    overflow-hidden
+    bg-[var(--sage)]
+    shrink-0
+  "
+>
 
-                                <Image
-                                  src={product.featuredImage?.url}
-                                  alt={product.title}
-                                  fill
-                                  unoptimized
-                                  className="object-contain p-2"
-                                />
-                              </div>
+  {product.featuredImage?.url ? (
+
+    <Image
+      src={product.featuredImage.url}
+      alt={product.title}
+      fill
+      unoptimized
+      className="object-contain p-2"
+    />
+
+  ) : (
+
+    <div
+      className="
+        w-full
+        h-full
+        flex
+        items-center
+        justify-center
+        text-xs
+        text-black/30
+      "
+    >
+
+      No Image
+    </div>
+  )}
+</div>
 
                               {/* CONTENT */}
                               <div className="min-w-0 flex-1">
 
                               <h4
   className="
-    text-sm
-    font-semibold
-    leading-6
-    text-black
-    line-clamp-2
-    break-words
-    overflow-hidden
-                                    leading-6
-                                    text-black
-                                    line-clamp-2
-                                    overflow-hidden
-                                  "
+  text-sm
+  font-semibold
+  leading-6
+  text-black
+  line-clamp-2
+  break-words
+  overflow-hidden
+"
                                 >
 
                                   {product.title}
@@ -567,9 +590,11 @@ export default function Navbar() {
                           <Link
                             key={product.id}
                             href={`/products/${product.handle}`}
-                            onClick={() =>
-                              setMobileMenu(false)
-                            }
+                            onClick={() => {
+                              setResults([]);
+                              setSearch("");
+                              setMobileMenu(false);
+                            }}
                             className="
                               flex
                               items-start
@@ -582,26 +607,46 @@ export default function Navbar() {
                           >
 
                             {/* IMAGE */}
-                            <div
-                              className="
-                                relative
-                                w-20
-                                h-20
-                                rounded-2xl
-                                overflow-hidden
-                                bg-[var(--sage)]
-                                shrink-0
-                              "
-                            >
+<div
+  className="
+    relative
+    w-20
+    h-20
+    rounded-2xl
+    overflow-hidden
+    bg-[var(--sage)]
+    shrink-0
+  "
+>
 
-                              <Image
-                                src={product.featuredImage?.url}
-                                alt={product.title}
-                                fill
-                                unoptimized
-                                className="object-contain p-2"
-                              />
-                            </div>
+  {product.featuredImage?.url ? (
+
+    <Image
+      src={product.featuredImage.url}
+      alt={product.title}
+      fill
+      unoptimized
+      className="object-contain p-2"
+    />
+
+  ) : (
+
+    <div
+      className="
+        w-full
+        h-full
+        flex
+        items-center
+        justify-center
+        text-xs
+        text-black/30
+      "
+    >
+
+      No Image
+    </div>
+  )}
+</div>
 
                             {/* CONTENT */}
                             <div className="min-w-0 flex-1">

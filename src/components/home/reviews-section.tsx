@@ -12,7 +12,7 @@ const reviews = [
     rotation: "md:rotate-[-3deg]",
   },
   {
-    name: "Riya Mehta",
+    name: "Omkar Bommakanti",
     role: "Working Professional",
     review:
       "The snacks and supplements fit perfectly into my daily routine. Packaging, quality and taste genuinely feel premium.",
