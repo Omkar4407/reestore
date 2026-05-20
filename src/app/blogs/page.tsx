@@ -145,8 +145,7 @@ export default function BlogsPage() {
           "
         >
 
-          {blogs.map((blog) => (
-
+{blogs.map((blog: any) => (
             <Link
               key={blog.slug}
               href={`/blogs/${blog.slug}`}

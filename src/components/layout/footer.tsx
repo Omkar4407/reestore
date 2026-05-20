@@ -60,9 +60,7 @@ export default async function Footer() {
           {/* BLOG IMAGES - desktop */}
           <div className="hidden md:grid md:grid-cols-3 gap-8 relative z-20">
 
-            {blogs.map((blog, index) => (
-
-              <div
+          {blogs.map((blog: any, index: number) => (              <div
                 key={index}
                 className="
                   relative
@@ -98,9 +96,7 @@ export default async function Footer() {
           {/* BLOG CARDS - mobile */}
           <div className="md:hidden space-y-5 pb-10">
 
-            {blogs.map((blog, index) => (
-
-              <div
+          {blogs.map((blog: any, index: number) => (              <div
                 key={index}
                 className="
                   bg-white
@@ -198,9 +194,7 @@ export default async function Footer() {
 
           <div className="hidden md:grid md:grid-cols-3 gap-8">
 
-            {blogs.map((blog, index) => (
-
-              <div
+          {blogs.map((blog: any, index: number) => (              <div
                 key={index}
                 className="
                   bg-[#d3f7f0]
