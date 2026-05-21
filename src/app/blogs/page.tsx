@@ -219,9 +219,7 @@ export default function BlogsPage() {
                   {blog.title}
                 </h2>
 
-                <p className="text-black/60 leading-7 text-[15px]">
-                  {blog.excerpt}
-                </p>
+                
               </div>
             </Link>
           ))}

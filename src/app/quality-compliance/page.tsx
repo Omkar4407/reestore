@@ -145,7 +145,7 @@ export default function QualityCompliancePage() {
 
   .rs-num-item {
     flex: 1 1 260px;
-    background: #D3F7F0;
+    background: #FFFFFF;
     border: 1px solid #d0f0ea;
     border-radius: 12px;
     padding: 36px 20px 20px;

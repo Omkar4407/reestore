@@ -30,42 +30,66 @@ export default async function Footer() {
           node.image?.url ||
           "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1400&auto=format&fit=crop",
 
-          excerpt: node.excerpt || "",
+        excerpt: node.excerpt || "",
       })
     ) || [];
 
   return (
     <>
       {/* BLOG SECTION */}
-      <section className="bg-[#d3f7f0] pt-16 md:pt-28">
+      <section className="bg-[#d3f7f0] pt-10 md:pt-16">
 
         <div className="max-w-[1600px] mx-auto px-4 md:px-6">
 
           {/* HEADER */}
-          <div className="text-center mb-10 md:mb-16">
+          <div className="text-center mb-7 md:mb-10">
 
-            <p className="text-[#00b894] font-semibold mb-3 md:mb-4">
+            <p className="text-[#00b894] font-semibold mb-3 text-sm md:text-base">
               Insights & Wellness
             </p>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#111] mb-4 md:mb-6">
+            <h2
+              className="
+                text-2xl
+                sm:text-3xl
+                md:text-4xl
+                font-bold
+                tracking-tight
+                text-[#111]
+                mb-4
+              "
+            >
+
               Blog & Articles
             </h2>
 
-            <p className="text-black/60 max-w-[760px] mx-auto text-base md:text-lg leading-7 md:leading-8">
+            <p
+              className="
+                text-black/60
+                max-w-[760px]
+                mx-auto
+                text-sm
+                md:text-base
+                leading-6
+                md:leading-7
+              "
+            >
+
               Explore expert wellness insights, smarter nutrition habits and practical guides for healthier living.
             </p>
           </div>
 
           {/* BLOG IMAGES - desktop */}
-          <div className="hidden md:grid md:grid-cols-3 gap-8 relative z-20">
+          <div className="hidden md:grid md:grid-cols-4 gap-5 relative z-20">
 
-          {blogs.map((blog: any, index: number) => (              <div
+            {blogs.map((blog: any, index: number) => (
+
+              <div
                 key={index}
                 className="
                   relative
-                  h-[420px]
-                  rounded-t-[34px]
+                  h-[300px]
+                  rounded-t-[24px]
                   overflow-hidden
                   group
                 "
@@ -84,7 +108,22 @@ export default async function Footer() {
                   "
                 />
 
-                <div className="absolute top-5 left-5 bg-[#1f6861] text-white text-sm font-semibold px-4 py-1 rounded-full z-20">
+                <div
+                  className="
+                    absolute
+                    top-5
+                    left-5
+                    bg-[#1f6861]
+                    text-white
+                    text-xs
+                    font-semibold
+                    px-3
+                    py-1
+                    rounded-full
+                    z-20
+                  "
+                >
+
                   {blog.category}
                 </div>
 
@@ -96,11 +135,13 @@ export default async function Footer() {
           {/* BLOG CARDS - mobile */}
           <div className="md:hidden space-y-5 pb-10">
 
-          {blogs.map((blog: any, index: number) => (              <div
+            {blogs.map((blog: any, index: number) => (
+
+              <div
                 key={index}
                 className="
                   bg-white
-                  rounded-[28px]
+                  rounded-[22px]
                   overflow-hidden
                   shadow-sm
                   flex
@@ -108,7 +149,7 @@ export default async function Footer() {
                 "
               >
 
-                <div className="relative h-[200px]">
+                <div className="relative h-[170px]">
 
                   <Image
                     src={blog.image}
@@ -118,20 +159,46 @@ export default async function Footer() {
                     className="object-cover"
                   />
 
-                  <div className="absolute top-4 left-4 bg-[#1f6861] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <div
+                    className="
+                      absolute
+                      top-4
+                      left-4
+                      bg-[#1f6861]
+                      text-white
+                      text-xs
+                      font-semibold
+                      px-3
+                      py-1
+                      rounded-full
+                    "
+                  >
+
                     {blog.category}
                   </div>
                 </div>
 
-                <div className="p-5 flex flex-col flex-1">
+                <div className="p-4 flex flex-col flex-1">
 
-                  <h3 className="text-lg font-bold leading-tight text-[#111] mb-3">
+                  <h3
+                    className="
+                      text-base
+                      font-bold
+                      leading-tight
+                      text-[#111]
+                      mb-3
+                    "
+                  >
+
                     {blog.title}
                   </h3>
 
-                  <p className="text-black/60 leading-6 text-sm">
-                    {blog.excerpt}
-                  </p>
+                  {blog.excerpt && (
+
+                    <p className="text-black/60 leading-6 text-sm">
+                      {blog.excerpt}
+                    </p>
+                  )}
 
                   <div className="mt-auto pt-5">
 
@@ -143,8 +210,8 @@ export default async function Footer() {
                         justify-center
                         bg-[#0d5c4d]
                         text-white
-                        px-5
-                        py-2.5
+                        px-4
+                        py-2
                         rounded-full
                         text-sm
                         font-medium
@@ -166,7 +233,7 @@ export default async function Footer() {
                   border
                   border-black/10
                   rounded-full
-                  px-7
+                  px-6
                   py-3
                   text-sm
                   font-medium
@@ -192,29 +259,45 @@ export default async function Footer() {
         {/* BLOG TEXT CARDS - desktop */}
         <div className="max-w-[1600px] mx-auto px-4 md:px-6 -mt-1 relative z-30">
 
-          <div className="hidden md:grid md:grid-cols-3 gap-8">
+          <div className="hidden md:grid md:grid-cols-4 gap-5">
 
-          {blogs.map((blog: any, index: number) => (              <div
+            {blogs.map((blog: any, index: number) => (
+
+              <div
                 key={index}
                 className="
                   bg-[#d3f7f0]
-                  rounded-b-[34px]
-                  p-8
+                  rounded-b-[24px]
+                  p-5
+                  md:p-6
                   flex
                   flex-col
                   h-full
                 "
               >
 
-                <h3 className="text-[28px] md:text-[32px] leading-tight font-bold text-[#111] mb-4 md:mb-5">
+                <h3
+                  className="
+                    text-[20px]
+                    md:text-[24px]
+                    leading-tight
+                    font-bold
+                    text-[#111]
+                    mb-3
+                  "
+                >
+
                   {blog.title}
                 </h3>
 
-                <p className="text-black/60 leading-7">
-                  {blog.excerpt}
-                </p>
+                {blog.excerpt && (
 
-                <div className="mt-auto pt-8">
+                  <p className="text-black/60 leading-6 text-sm">
+                    {blog.excerpt}
+                  </p>
+                )}
+
+                <div className="mt-auto pt-6">
 
                   <Link
                     href={`/blogs/${blog.slug}`}
@@ -224,10 +307,11 @@ export default async function Footer() {
                       gap-2
                       bg-[#1f6861]
                       text-white
-                      px-5
-                      py-3
+                      px-4
+                      py-2
                       rounded-full
-                      font-semibold
+                      text-sm
+                      font-medium
                       hover:gap-3
                       transition-all
                     "
@@ -243,7 +327,7 @@ export default async function Footer() {
           </div>
 
           {/* VIEW ALL - desktop */}
-          <div className="hidden md:flex justify-center mt-10 mb-20">
+          <div className="hidden md:flex justify-center mt-8 mb-14">
 
             <Link
               href="/blogs"
@@ -251,8 +335,9 @@ export default async function Footer() {
                 border
                 border-white/10
                 rounded-full
-                px-8
-                py-4
+                px-6
+                py-3
+                text-sm
                 font-semibold
                 hover:bg-white
                 hover:text-black
@@ -266,15 +351,24 @@ export default async function Footer() {
         </div>
 
         {/* MAIN FOOTER CONTENT */}
-        <div className="max-w-[1600px] mx-auto px-4 md:px-6 pt-10 md:pt-0">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 pt-8 md:pt-0">
 
           {/* TOP */}
-          <div className="flex items-center justify-between mb-8 md:mb-12 border-b border-white/10 pb-5 md:pb-6">
+          <div className="flex items-center justify-between mb-6 md:mb-8 border-b border-white/10 pb-5 md:pb-6">
 
             {/* LOGO */}
             <Link
               href="/"
-              className="relative w-[180px] h-[54px] sm:w-[220px] sm:h-[66px] md:w-[280px] md:h-[82px] shrink-0"
+              className="
+                relative
+                w-[150px]
+                h-[46px]
+                sm:w-[180px]
+                sm:h-[56px]
+                md:w-[220px]
+                md:h-[68px]
+                shrink-0
+              "
             >
 
               <Image
@@ -291,10 +385,10 @@ export default async function Footer() {
             <a
               href="#top"
               className="
-                w-12
-                h-12
-                md:w-14
-                md:h-14
+                w-11
+                h-11
+                md:w-12
+                md:h-12
                 rounded-2xl
                 border
                 border-white/10
@@ -307,21 +401,21 @@ export default async function Footer() {
               "
             >
 
-              <ArrowUp className="w-5 h-5" />
+              <ArrowUp className="w-4 h-4" />
             </a>
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
 
             {/* COMPANY */}
             <div>
 
-              <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">
+              <h3 className="text-sm md:text-base font-semibold mb-4">
                 Company
               </h3>
 
-              <div className="flex flex-col gap-3 md:gap-4 text-white/70 text-sm">
+              <div className="flex flex-col gap-3 text-white/70 text-sm">
 
                 <Link href="/about-us" className="hover:text-white transition">
                   About Us
@@ -356,11 +450,11 @@ export default async function Footer() {
             {/* CATEGORIES */}
             <div>
 
-              <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">
+              <h3 className="text-sm md:text-base font-semibold mb-4">
                 Categories
               </h3>
 
-              <div className="space-y-3 md:space-y-4 text-white/70 text-sm">
+              <div className="space-y-3 text-white/70 text-sm">
                 <p>Food Products</p>
                 <p>Supplements</p>
                 <p>Nutraceuticals</p>
@@ -371,11 +465,11 @@ export default async function Footer() {
             {/* CONTACT */}
             <div>
 
-              <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">
+              <h3 className="text-sm md:text-base font-semibold mb-4">
                 Contact
               </h3>
 
-              <div className="space-y-3 md:space-y-4 text-white/70 text-sm">
+              <div className="space-y-3 text-white/70 text-sm">
                 <p>ecom@reework.in</p>
                 <p>+91 8652631386</p>
                 <p>Mumbai, Maharashtra</p>
@@ -385,37 +479,80 @@ export default async function Footer() {
             {/* SOCIALS */}
             <div>
 
-              <h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6">
+              <h3 className="text-sm md:text-base font-semibold mb-4">
                 Follow Us
               </h3>
 
-              <div className="flex items-center gap-3 md:gap-4">
+              <div className="flex items-center gap-3">
 
                 <a
                   href="https://www.instagram.com/ree_coach_?igsh=aGo3dzhpeXJ1a3B0"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-white/10 flex items-center justify-center hover:bg-white hover:text-black transition"
+                  className="
+                    w-10
+                    h-10
+                    md:w-11
+                    md:h-11
+                    rounded-2xl
+                    bg-white/10
+                    flex
+                    items-center
+                    justify-center
+                    hover:bg-white
+                    hover:text-black
+                    transition
+                  "
                 >
 
-                  <Camera className="w-5 h-5" />
+                  <Camera className="w-4 h-4" />
                 </a>
 
                 <a
                   href="https://www.youtube.com/@reecoach"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-2xl bg-white/10 flex items-center justify-center hover:bg-white hover:text-black transition"
+                  className="
+                    w-10
+                    h-10
+                    md:w-11
+                    md:h-11
+                    rounded-2xl
+                    bg-white/10
+                    flex
+                    items-center
+                    justify-center
+                    hover:bg-white
+                    hover:text-black
+                    transition
+                  "
                 >
 
-                  <Play className="w-5 h-5" />
+                  <Play className="w-4 h-4" />
                 </a>
               </div>
             </div>
           </div>
 
           {/* BOTTOM */}
-          <div className="border-t border-white/10 mt-12 md:mt-16 pt-6 md:pt-8 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4 text-xs md:text-sm text-white/50 text-center">
+          <div
+            className="
+              border-t
+              border-white/10
+              mt-8
+              md:mt-10
+              pt-6
+              flex
+              flex-col
+              md:flex-row
+              items-center
+              justify-between
+              gap-3
+              text-xs
+              text-white/50
+              text-center
+            "
+          >
 
             <p>
               © 2026 Reestore. All rights reserved.

@@ -54,7 +54,21 @@ export default function AddToCartButton({ variantId }: Props) {
     <button
       onClick={handleAddToCart}
       disabled={loading}
-      className="w-full bg-[#0d5c4d] text-white rounded-full py-6 text-xl font-semibold hover:opacity-90 transition disabled:opacity-50"
+      className="
+        w-full
+        bg-[#0d5c4d]
+        text-white
+        rounded-full
+        h-11
+        text-sm
+        font-semibold
+        hover:opacity-90
+        transition
+        disabled:opacity-50
+        flex
+        items-center
+        justify-center
+      "
     >
       {loading ? "Adding..." : "Add to Bag"}
     </button>

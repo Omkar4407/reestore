@@ -62,9 +62,15 @@ export default function FeaturedProducts({
         </div>
 
         {/* PRODUCTS */}
-        {/* PRODUCTS */}
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-
+        <div
+  className="
+    grid
+    grid-cols-2
+    lg:grid-cols-4
+    gap-2
+    md:gap-5
+  "
+>
 {products.map((product) => {
 
   const item = product.node;
@@ -104,10 +110,11 @@ export default function FeaturedProducts({
           <div
             className="
               relative
-              mt-20
-              sm:mt-24
-              h-[360px]
-              sm:h-[430px]
+              mt-12
+sm:mt-16
+              h-[180px]
+sm:h-[220px]
+lg:h-[240px]
               overflow-visible
               flex
               items-center
@@ -122,21 +129,12 @@ export default function FeaturedProducts({
                 absolute
                 inset-0
                 bg-white
-                rounded-[32px]
-                sm:rounded-[42px]
+                rounded-[24px]
+                h-[250px]
+sm:rounded-[30px]
               "
             />
 
-            {/* INNER BOX */}
-            <div
-              className="
-                absolute
-                inset-5
-                bg-white
-                rounded-[28px]
-                sm:rounded-[36px]
-              "
-            />
 
             {/* SOFT GRADIENT */}
             <div
@@ -146,8 +144,8 @@ export default function FeaturedProducts({
                 bg-gradient-to-b
                 from-white/25
                 to-transparent
-                rounded-[32px]
-                sm:rounded-[42px]
+                rounded-[24px]
+sm:rounded-[30px]
               "
             />
 
@@ -164,10 +162,10 @@ export default function FeaturedProducts({
                 }}
                 className="
                   absolute
-                  -top-28
-                  sm:-top-32
-                  w-[108%]
-                  h-[108%]
+                  -top-10
+sm:-top-12
+w-[82%]
+h-[82%]
                   z-10
                 "
               >
@@ -193,8 +191,7 @@ export default function FeaturedProducts({
               flex
               flex-col
               flex-1
-              pt-4
-              sm:pt-5
+              pt-5
             "
           >
 
@@ -221,13 +218,14 @@ export default function FeaturedProducts({
             </div>
 
             {/* TITLE */}
-            <div className="min-h-[150px]">
+            <div className="min-h-[56px]
+sm:min-h-[64px]">
 
               <h3
                 className="
-                  text-[22px]
-                  sm:text-[26px]
-                  md:text-[28px]
+                  text-[15px]
+sm:text-[16px]
+md:text-[17px]
                   leading-tight
                   font-semibold
                   tracking-tight
@@ -249,10 +247,10 @@ export default function FeaturedProducts({
                   justify-center
                   bg-[#bdeee5]
                   text-[#0d5c4d]
-                  px-4
-                  py-1.5
+                  px-3
+py-1
+text-xs
                   rounded-full
-                  text-sm
                   font-semibold
                 "
               >
@@ -272,7 +270,8 @@ export default function FeaturedProducts({
               "
             >
 
-              <span className="text-2xl sm:text-3xl font-bold">
+              <span className="text-base
+sm:text-lg font-bold">
 
                 ₹{" "}
                 {Math.round(
@@ -294,15 +293,15 @@ export default function FeaturedProducts({
       </Link>
 
       {/* BUTTON */}
-      <div className="mt-auto pt-2">
+<div className="mt-auto pt-1 pb-1">
 
-        {variantId && (
+{variantId && (
 
-          <AddToCartButton
-            variantId={variantId}
-          />
-        )}
-      </div>
+  <AddToCartButton
+    variantId={variantId}
+  />
+)}
+</div>
     </div>
   );
 })}

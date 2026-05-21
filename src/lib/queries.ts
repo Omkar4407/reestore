@@ -442,7 +442,7 @@ export const getBlogsQuery = `
 
       node {
 
-        articles(first: 3) {
+        articles(first: 4) {
 
           edges {
 
