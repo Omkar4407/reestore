@@ -2,7 +2,7 @@ export const getProductsQuery = `
 {
   collection(handle: "featured-products") {
 
-    products(first: 6) {
+    products(first: 8) {
 
       edges {
 
@@ -442,7 +442,7 @@ export const getBlogsQuery = `
 
       node {
 
-        articles(first: 4) {
+        articles(first: 3) {
 
           edges {
 

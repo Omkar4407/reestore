@@ -145,7 +145,7 @@ export default function QualityCompliancePage() {
 
   .rs-num-item {
     flex: 1 1 260px;
-    background: #FFFFFF;
+    background: #d3f7f0;
     border: 1px solid #d0f0ea;
     border-radius: 12px;
     padding: 36px 20px 20px;
@@ -575,7 +575,7 @@ export default function QualityCompliancePage() {
   }
 
   .rs-stacked-item {
-    background: #D3F7F0;
+    background: #ffffff;
     border-left: 4px solid #1abc9c;
     border-radius: 0 10px 10px 0;
     padding: 16px 18px;

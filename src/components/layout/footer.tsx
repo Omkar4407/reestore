@@ -39,7 +39,7 @@ export default async function Footer() {
       {/* BLOG SECTION */}
       <section className="bg-[#d3f7f0] pt-10 md:pt-16">
 
-        <div className="max-w-[1600px] mx-auto px-4 md:px-6">
+        <div className="max-w-[1080px] mx-auto px-4 md:px-6">
 
           {/* HEADER */}
           <div className="text-center mb-7 md:mb-10">
@@ -80,15 +80,26 @@ export default async function Footer() {
           </div>
 
           {/* BLOG IMAGES - desktop */}
-          <div className="hidden md:grid md:grid-cols-4 gap-5 relative z-20">
-
+          <div
+  className="
+    hidden
+    md:grid
+    md:grid-cols-3
+    gap-5
+    relative
+    z-20
+    justify-center
+    max-w-[1180px]
+    mx-auto
+  "
+>
             {blogs.map((blog: any, index: number) => (
 
               <div
                 key={index}
                 className="
                   relative
-                  h-[300px]
+                  h-[200px]
                   rounded-t-[24px]
                   overflow-hidden
                   group
@@ -257,10 +268,19 @@ export default async function Footer() {
       <footer className="bg-[#0d5c4d] text-white pt-0 pb-10 overflow-hidden">
 
         {/* BLOG TEXT CARDS - desktop */}
-        <div className="max-w-[1600px] mx-auto px-4 md:px-6 -mt-1 relative z-30">
+        <div className="max-w-[1080px] mx-auto px-4 md:px-6 -mt-1 relative z-30">
 
-          <div className="hidden md:grid md:grid-cols-4 gap-5">
-
+        <div
+  className="
+    hidden
+    md:grid
+    md:grid-cols-3
+    gap-5
+    justify-center
+    max-w-[1180px]
+    mx-auto
+  "
+>
             {blogs.map((blog: any, index: number) => (
 
               <div
@@ -279,7 +299,7 @@ export default async function Footer() {
                 <h3
                   className="
                     text-[20px]
-                    md:text-[24px]
+                    md:text-[18px]
                     leading-tight
                     font-bold
                     text-[#111]
@@ -406,7 +426,7 @@ export default async function Footer() {
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
 
             {/* COMPANY */}
             <div>

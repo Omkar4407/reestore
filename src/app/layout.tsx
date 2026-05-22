@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { Inter } from "next/font/google";
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import CartDrawer from "@/components/cart/cart-drawer";
@@ -23,8 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body id="top" className="bg-[#f7fffd] text-[#232323] overflow-x-hidden">
-
+<body
+  id="top"
+  className={`${inter.className} bg-[#f7fffd] text-[#232323] overflow-x-hidden`}
+>
         <Navbar />
 
         {children}
