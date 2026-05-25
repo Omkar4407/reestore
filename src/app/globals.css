@@ -210,3 +210,14 @@ a {
     transform 0.25s ease,
     opacity 0.25s ease;
 }
+
+@keyframes expertScroll {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

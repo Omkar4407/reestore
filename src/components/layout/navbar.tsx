@@ -160,7 +160,7 @@ export default function Navbar() {
 >
 
               <Link
-                href="/"
+                href="/store"
                 className="ml-auto hover:text-[var(--forest-dark)] transition"
               >
 
