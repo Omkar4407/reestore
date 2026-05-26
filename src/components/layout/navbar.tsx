@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import QualityCompliancePage from "@/app/quality-compliance/page";
-import AboutUsPage from "@/app/about-us/page";
 
 import {
   ShoppingBag,
