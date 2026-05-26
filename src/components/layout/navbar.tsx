@@ -181,20 +181,13 @@ export default function Navbar() {
                 Supplements & Nutraceuticals
               </Link>
 
+              
               <Link
-                href="/"
+                href="/blogs"
                 className="ml-auto hover:text-[var(--forest-dark)] transition"
               >
 
-                Gadgets
-              </Link>
-
-              <Link
-                href="/about-us"
-                className="ml-auto hover:text-[var(--forest-dark)] transition"
-              >
-
-                About Us
+                Blogs
               </Link>
 
               <Link

@@ -191,15 +191,15 @@ export default function LandingPage() {
           className="
             inline-flex
             items-center
-            h-[28px]
+            h-[34px]
             rounded-full
-            px-4
-            mb-5
+            px-5
+            mb-6
           "
           style={{
             background: "rgba(211,247,240,0.9)",
             color: "var(--forest)",
-            fontSize: 8,
+            fontSize: 9,
             fontWeight: 900,
             letterSpacing: "0.22em",
             textTransform: "uppercase",
@@ -387,10 +387,26 @@ export default function LandingPage() {
         <section className="py-11" style={{ background: "var(--white)", borderTop: "1px solid var(--border-light)" }}>
           <div className="max-w-[1180px] mx-auto px-5">
             <div className="max-w-[700px]">
-              <div className="inline-flex items-center justify-center h-[27px] rounded-full px-3.5 mb-4"
-                style={{ background: "var(--sage)", color: "var(--forest)", fontSize: 8, fontWeight: 900, letterSpacing: "0.22em", textTransform: "uppercase" }}>
-                Why We Exist
-              </div>
+            <div
+          className="
+            inline-flex
+            items-center
+            h-[34px]
+            rounded-full
+            px-5
+            mb-6
+          "
+          style={{
+            background: "rgba(211,247,240,0.9)",
+            color: "var(--forest)",
+            fontSize: 9,
+            fontWeight: 900,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+          }}
+        >
+          Why We Exist
+        </div>
               <h2 className="text-[34px] leading-[1.04] tracking-[-0.03em] font-black" style={{ color: "var(--text)" }}>
                 Because your health deserves better than guesswork.
               </h2>
@@ -411,7 +427,8 @@ export default function LandingPage() {
                   </div>
                   <div>
                     <h3 className="text-[17px] leading-[1.3] font-black" style={{ color: "var(--text)" }}>{item.title}</h3>
-                    <p className="mt-3 text-[12px] leading-[1.8] font-medium max-w-[210px]" style={{ color: "var(--text-muted)" }}>{item.text}</p>
+                    <p className="mt-4 text-[13px] leading-[1.85] font-medium max-w-[620px]" style={{ color: "var(--text-muted)"
+ }}>{item.text}</p>
                   </div>
                 </div>
               ))}
@@ -425,10 +442,26 @@ export default function LandingPage() {
             <div className="grid lg:grid-cols-[1.05fr_0.55fr] gap-8 items-start">
 
               <div>
-                <div className="inline-flex items-center justify-center h-[27px] rounded-full px-3.5 mb-4"
-                  style={{ background: "var(--sage)", color: "var(--forest)", fontSize: 8, fontWeight: 900, letterSpacing: "0.22em", textTransform: "uppercase" }}>
-                  How We Choose Products
-                </div>
+              <div
+          className="
+            inline-flex
+            items-center
+            h-[34px]
+            rounded-full
+            px-5
+            mb-6
+          "
+          style={{
+            background: "rgba(211,247,240,0.9)",
+            color: "var(--forest)",
+            fontSize: 9,
+            fontWeight: 900,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+          }}
+        >
+          How We Choose Products
+        </div>
                 <h2 className="text-[34px] leading-[1.04] tracking-[-0.03em] font-black" style={{ color: "var(--text)" }}>
                   We go beyond the basics.
                 </h2>
@@ -464,14 +497,14 @@ export default function LandingPage() {
               <div className="rounded-[28px] px-8 py-8 relative overflow-hidden min-h-[270px]"
                 style={{ background: "var(--mint-dark)", color: "var(--white)", boxShadow: "0 8px 32px rgba(0,184,148,0.22)" }}>
                 <HeartHandshake className="absolute right-6 top-5 w-20 h-20" style={{ color: "rgba(255,255,255,0.1)" }} />
-                <h3 className="text-[30px] font-black" style={{ color: "var(--white)" }}>Our Promise</h3>
+                <h3 className="text-[34px] leading-[1.04] tracking-[-0.03em] font-black" style={{ color: "var(--white)" }}>Our Promise</h3>
                 <div className="mt-7 space-y-5">
                   {["Quality you can trust", "Information you can understand", "Products that support your goals"].map((item, i) => (
                     <div key={i} className="flex items-start gap-4">
                       <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "rgba(255,255,255,0.15)" }}>
                         <ShieldCheck className="w-3.5 h-3.5" style={{ color: "var(--white)" }} />
                       </div>
-                      <p className="text-[15px] leading-[1.8] font-semibold" style={{ color: "var(--white-soft)" }}>{item}</p>
+                      <h3 className="text-[17px] leading-[1.3] font-black" style={{ color: "var(--white-soft)" }}>{item}</h3>
                     </div>
                   ))}
                 </div>
@@ -486,14 +519,30 @@ export default function LandingPage() {
             <div className="grid lg:grid-cols-[0.92fr_1.08fr] gap-7 items-center">
 
               <div>
-                <div className="inline-flex items-center justify-center h-[27px] rounded-full px-3.5 mb-4"
-                  style={{ background: "var(--sage-dark)", color: "var(--forest)", fontSize: 8, fontWeight: 900, letterSpacing: "0.22em", textTransform: "uppercase" }}>
-                  Our Solution
-                </div>
+              <div
+          className="
+            inline-flex
+            items-center
+            h-[34px]
+            rounded-full
+            px-5
+            mb-6
+          "
+          style={{
+            background: "white",
+            color: "var(--forest)",
+            fontSize: 9,
+            fontWeight: 900,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+          }}
+        >
+          Our Solution
+        </div>
                 <h2 className="text-[34px] leading-[1.04] tracking-[-0.03em] font-black max-w-[520px]" style={{ color: "var(--text)" }}>
                   That's why we created ReeStore.
                 </h2>
-                <p className="mt-4 text-[13px] leading-[1.85] font-medium max-w-[500px]" style={{ color: "var(--text-soft)" }}>
+                <p className="mt-4 text-[13px] leading-[1.85] font-medium max-w-[620px]" style={{ color: "var(--text-muted)" }}>
                   A curated wellness store where products are selected with expert thinking, clearer information and responsible review — so you can make better everyday health choices.
                 </p>
               </div>
@@ -508,7 +557,7 @@ export default function LandingPage() {
                     style={{ borderRight: i !== 2 ? "1px solid var(--border-light)" : "none" }}>
                     <item.icon className="w-7 h-7" style={{ color: "var(--mint-dark)" }} />
                     <h3 className="mt-4 text-[17px] leading-[1.3] font-black" style={{ color: "var(--text)" }}>{item.title}</h3>
-                    <p className="mt-3 text-[12px] leading-[1.8] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
+                    <p className="mt-3 text-[13px] leading-[1.85] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
                   </div>
                 ))}
               </div>
@@ -520,18 +569,71 @@ export default function LandingPage() {
         <section className="py-11" style={{ background: "var(--white)", borderTop: "1px solid var(--border-light)" }}>
           <div className="max-w-[1180px] mx-auto px-5">
             <div className="rounded-[30px] px-10 py-9 flex items-center justify-between gap-6" style={{ background: "var(--sage)" }}>
-              {[
-                { icon: HeartHandshake, title: "ReeCoach", text: "Expert guidance, care personalized plans." },
-                { icon: Eye, title: "ReeWork App", text: "Follow plans, track progress and stay motivated." },
-                { icon: Leaf, title: "ReeStore", text: "Curated products to support your health journey." },
-              ].map((item, i) => (
+            {[
+  {
+    logo: "/Reecoach_logo.png",
+    title: "ReeCoach",
+    text: "Expert guidance, care personalized plans."
+  },
+  {
+    logo: "/Reework_logo.png",
+    title: "ReeWork App",
+    text: "Follow plans, track progress and stay motivated."
+  },
+  {
+    logo: "/Reestore_logo.png",
+    title: "ReeStore",
+    text: "Curated products to support your health journey."
+  },
+].map((item, i) => (
                 <div key={i} className="flex items-center gap-6">
-                  <div className="rs-eco-card w-[230px] min-h-[185px] rounded-[26px] px-6 py-6 text-center flex flex-col items-center justify-center cursor-default">
-                    <div className="w-[68px] h-[68px] rounded-full flex items-center justify-center" style={{ background: "var(--sage)" }}>
-                      <item.icon className="w-8 h-8" style={{ color: "var(--mint-dark)" }} />
-                    </div>
-                    <h3 className="mt-5 text-[24px] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
-                    <p className="mt-3 text-[14px] leading-[1.8] font-semibold max-w-[170px]" style={{ color: "var(--text-soft)" }}>{item.text}</p>
+<div
+  className="
+    rs-eco-card
+    w-[250px]
+    h-[240px]
+    rounded-[26px]
+    px-6
+    py-6
+    text-center
+    flex
+    flex-col
+    items-center
+    justify-start
+    shrink-0
+  "
+>
+<div
+  className="
+    relative
+    w-[120px]
+    h-[90px]
+    flex
+    items-center
+    justify-center
+  "
+>
+
+  <Image
+    src={item.logo}
+    alt={item.title}
+    fill
+    className="object-contain object-center w-full h-full"  />
+</div>
+<h3 className="mt-4 text-[24px] leading-[1] font-black min-h-[30px]" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
+<p
+  className="
+    mt-3
+    text-[14px]
+    leading-[1.8]
+    font-semibold
+    max-w-[180px]
+    min-h-[78px]
+    flex
+    items-start
+    justify-center
+  "
+>{item.text}</p>
                   </div>
                   {i !== 2 && (
                     <svg width="110" height="34" viewBox="0 0 110 34" fill="none" className="shrink-0 mt-[-6px]">
@@ -548,11 +650,27 @@ export default function LandingPage() {
         {/* ─── BEYOND THE LABEL ─── */}
         <section className="pt-16 pb-10 overflow-hidden" style={{ background: "var(--white)", borderTop: "1px solid var(--border-light)" }}>
           <div className="max-w-[1180px] mx-auto px-5">
-            <div className="inline-flex items-center justify-center h-[25px] rounded-full px-3 mb-3"
-              style={{ background: "var(--sage)", color: "var(--forest)", fontSize: 7, fontWeight: 900, letterSpacing: "0.22em", textTransform: "uppercase" }}>
-              Beyond The Label
-            </div>
-            <h2 className="text-[30px] leading-[1.05] tracking-[-0.03em] font-black max-w-[400px]" style={{ color: "var(--text)" }}>
+          <div
+          className="
+            inline-flex
+            items-center
+            h-[34px]
+            rounded-full
+            px-5
+            mb-6
+          "
+          style={{
+            background: "rgba(211,247,240,0.9)",
+            color: "var(--forest)",
+            fontSize: 9,
+            fontWeight: 900,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+          }}
+        >
+          Beyond The Label
+        </div>
+            <h2 className="text-[34px] leading-[1.04] tracking-[-0.03em] font-black max-w-[400px]" style={{ color: "var(--text)" }}>
               We look beyond what's written on the label.
             </h2>
 
@@ -565,8 +683,8 @@ export default function LandingPage() {
                 ].map((item, i) => (
                   <div key={i} className="relative min-h-[92px]">
                     <div className="max-w-[220px]">
-                      <h3 className="text-[13px] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
-                      <p className="mt-2 text-[11px] leading-[1.8] font-medium" style={{ color: "var(--text-soft)" }}>{item.text}</p>
+                      <h3 className="text-[17px] leading-[1.3] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
+                      <p className="mt-4 text-[13px] leading-[1.85] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
                     </div>
                     <svg className="absolute top-0 left-0 pointer-events-none z-30 overflow-visible" width="380" height="90" viewBox="0 0 380 90" fill="none">
                       <path d={item.line} stroke="rgba(0,184,148,0.25)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -592,8 +710,8 @@ export default function LandingPage() {
                       <circle cx="0" cy={item.cy} r="4.5" fill="var(--mint-dark)" />
                     </svg>
                     <div className="ml-[170px] max-w-[220px]">
-                      <h3 className="text-[13px] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
-                      <p className="mt-2 text-[11px] leading-[1.8] font-medium" style={{ color: "var(--text-soft)" }}>{item.text}</p>
+                      <h3 className="text-[17px] leading-[1.3] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
+                      <p className="mt-4 text-[13px] leading-[1.85] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
                     </div>
                   </div>
                 ))}
@@ -605,11 +723,27 @@ export default function LandingPage() {
         {/* ─── EXPLORE CATEGORIES ─── */}
         <section className="py-11" style={{ background: "var(--sage)", borderTop: "1px solid var(--border-light)" }}>
           <div className="max-w-[1180px] mx-auto px-5">
-            <div className="inline-flex items-center justify-center h-[25px] rounded-full px-3 mb-3"
-              style={{ background: "var(--sage-dark)", color: "var(--forest)", fontSize: 7, fontWeight: 900, letterSpacing: "0.22em", textTransform: "uppercase" }}>
-              Explore Categories
-            </div>
-            <h2 className="text-[30px] leading-[1.05] tracking-[-0.03em] font-black" style={{ color: "var(--text)" }}>
+          <div
+          className="
+            inline-flex
+            items-center
+            h-[34px]
+            rounded-full
+            px-5
+            mb-6
+          "
+          style={{
+            background: "white",
+            color: "var(--forest)",
+            fontSize: 9,
+            fontWeight: 900,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+          }}
+        >
+          Explore Categories
+        </div>
+            <h2 className="text-[34px] leading-[1.04] tracking-[-0.03em] font-black" style={{ color: "var(--text)" }}>
               Shop by your health goals
             </h2>
 
@@ -626,7 +760,7 @@ export default function LandingPage() {
                   <div className="rs-cat-card relative aspect-[1/1] rounded-[18px] overflow-hidden">
                     <Image src={item.image} alt={item.title} fill className="object-cover transition duration-500 group-hover:scale-105" />
                   </div>
-                  <h3 className="mt-4 text-[15px] leading-[1.35] font-black" style={{ color: "var(--text)" }}>{item.title}</h3>
+                  <h3 className="mt-4 text-[17px] leading-[1.3] font-black" style={{ color: "var(--text)" }}>{item.title}</h3>
                 </Link>
               ))}
             </div>
@@ -842,27 +976,28 @@ export default function LandingPage() {
             inline-flex
             items-center
             justify-center
-            h-[25px]
+            h-[34px]
             rounded-full
-            px-3
-            mb-4
+            px-5
+            mb-6
           "
           style={{
-            background: "var(--sage)",
+            background: "rgba(211,247,240,0.9)",
             color: "var(--forest)",
-            fontSize: 7,
+            fontSize: 9,
             fontWeight: 900,
             letterSpacing: "0.22em",
             textTransform: "uppercase",
           }}
+
         >
           Guided By Nutrition Expertise
         </div>
 
         <h2
           className="
-            text-[40px]
-            leading-[1.05]
+            text-[34px]
+            leading-[1.04]
             tracking-[-0.03em]
             font-black
           "
@@ -879,14 +1014,14 @@ export default function LandingPage() {
         <p
           className="
             mt-5
-            text-[14px]
-            leading-[2]
-            max-w-[820px]
+            text-[13px]
+            leading-[1.85]
+            max-w-[620px]
             mx-auto
             font-medium
           "
           style={{
-            color: "var(--text-soft)",
+            color: "var(--text-muted)",
           }}
         >
 
@@ -940,8 +1075,8 @@ export default function LandingPage() {
 
               <item.icon
                 className="
-                  w-[18px]
-                  h-[18px]
+                  w-[22px]
+                  h-[22px]
                   shrink-0
                   mt-0.5
                 "

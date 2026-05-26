@@ -437,10 +437,6 @@ export default async function Footer() {
 
               <div className="flex flex-col gap-3 text-white/70 text-sm">
 
-                <Link href="/about-us" className="hover:text-white transition">
-                  About Us
-                </Link>
-
                 <Link href="/quality-compliance" className="hover:text-white transition">
                   Quality & Compliance
                 </Link>
@@ -478,7 +474,6 @@ export default async function Footer() {
                 <p>Food Products</p>
                 <p>Supplements</p>
                 <p>Nutraceuticals</p>
-                <p>Health Gadgets</p>
               </div>
             </div>
 
@@ -490,10 +485,39 @@ export default async function Footer() {
               </h3>
 
               <div className="space-y-3 text-white/70 text-sm">
-                <p>ecom@reework.in</p>
-                <p>+91 8652631386</p>
-                <p>Mumbai, Maharashtra</p>
-              </div>
+
+  {/* EMAIL */}
+  <a
+    href="mailto:ecom@reework.in"
+    className="
+      block
+      hover:text-white
+      transition-colors
+      duration-200
+    "
+  >
+    ecom@reework.in
+  </a>
+
+  {/* WHATSAPP */}
+  <a
+    href="https://wa.me/918652631386"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="
+      block
+      hover:text-white
+      transition-colors
+      duration-200
+    "
+  >
+    +91 8652631386
+  </a>
+
+  {/* LOCATION */}
+  <p>Mumbai, Maharashtra</p>
+
+</div>
             </div>
 
             {/* SOCIALS */}
