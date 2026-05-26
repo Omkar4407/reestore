@@ -640,7 +640,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* ─── EXPERTS SECTION ─── */}
+{/* ─── EXPERTS SECTION ─── */}
 <section
   className="overflow-hidden pt-12"
   style={{
@@ -649,382 +649,373 @@ export default function LandingPage() {
   }}
 >
 
-  {/* DATA */}
-  {(() => {
+  <div className="max-w-[1280px] mx-auto px-6">
 
-    const experts = [
-      {
-        image: "/shilpa_varma.jpg",
-        name: "Dr. Sarah Mitchell",
-        role: "Clinical Nutritionist",
-      },
-      {
-        image: "/arun_om_lal.jpg",
-        name: "Nazanin Husein",
-        role: "Wellness Expert",
-      },
-      {
-        image: "/nilesh_amritkar.jpg",
-        name: "Dr. Emily Carter",
-        role: "Sports Dietitian",
-      },
-      {
-        image: "/sakharam_garale.jpg",
-        name: "Ariana Blake",
-        role: "Lifestyle Coach",
-      },
-    ];
+    {/* ─── EXPERTS ROW ─── */}
+<div
+  className="
+    grid
+    grid-cols-5
+    gap-x-6
+    gap-y-10
+    justify-items-center
+  "
+>
 
-    return (
+  {[
+    {
+      image: "/arun_om_lal.jpg",
+      name: "Dr. Arun Om Lal",
+      role: "Industry Chair Prof.",
+      place: "(NIFTEM K)"
+    },
+    {
+      image: "/nilesh_amritkar.jpg",
+      name: "Dr. Nilesh Amritkar",
+      role: "Food Safety & Testing Expert",
+      place: "(Managing Director, Envirocare Labs)"
+    },
+    {
+      image: "/sakharam_garale.jpg",
+      name: "Dr. Sakharam Garale",
+      role: "Founder & CEO",
+      place: "(Renovare Healthcare Solutions)"
+    },
+    {
+      image: "/shilpa_varma.jpg",
+      name: "Ms. Shilpa Varma",
+      role: "Chief Clinical Nutritionist",
+      place: "(BelleVue Hospital)"
+    },
+    {
+      image: "/vilas_shirhatti.jpeg",
+      name: "Dr. Vilas Shirhatti",
+      role: "Technical Director",
+      place: "(Naturell India Pvt. Ltd.)"
+    },
+    {
+      image: "/chinmayee_deulgaonkar.png",
+      name: "Ms. Chinmayee Deulgaonkar",
+      role: "Managing Director",
+      place: "(FoodChain ID India)"
+    },
+    {
+      image: "/eileen_canday.jpg",
+      name: "Dr. Eileen Canday",
+      role: "HOD, Nutrition & Dietetics",
+      place: "(Reliance Foundation Hospital)"
+    },
+    {
+      image: "/niti_desai.jpg",
+      name: "Ms. Niti Desai",
+      role: "Consultant Nutritionist",
+      place: "(Cumballa Hill Hospital)"
+    },
+    {
+      image: "/subhaprada_nishtala.jpg",
+      name: "Ms. Subhaprada Nishtala",
+      role: "Director Incharge",
+      place: "(ITC-FSAN)"
+    },
+    {
+      image: "/zamurrud_patel.png",
+      name: "Ms. Zamurrud Patel",
+      role: "Chief Dietitian",
+      place: "(Gleneagles Hospital)"
+    },
+  ].map((expert, index) => (
 
-      <div className="max-w-[1380px] mx-auto">
+    <div
+      key={index}
+      className="
+        flex
+        flex-col
+        items-center
+        text-center
+        max-w-[180px]
+      "
+    >
 
-        {/* ─── CURVED MOVIE REEL CAROUSEL ─── */}
+      {/* IMAGE CIRCLE */}
+      <div
+        className="
+          relative
+          w-[150px]
+          h-[150px]
+          rounded-full
+          overflow-hidden
+          border-[5px]
+          bg-[#f7fffd]
+          shadow-[0_10px_28px_rgba(0,0,0,0.05)]
+        "
+        style={{
+          borderColor: "rgba(0,184,148,0.16)",
+        }}
+      >
+
+        <Image
+          src={expert.image}
+          alt={expert.name}
+          fill
+          className="object-cover object-center"
+        />
+      </div>
+
+      {/* NAME */}
+      <div
+        className="
+          mt-3
+          px-3
+          py-2
+          rounded-full
+          border
+        "
+        style={{
+          borderColor: "rgba(0,184,148,0.16)",
+          background: "rgba(211,247,240,0.45)",
+        }}
+      >
+
+        <p
+          className="
+            text-[11px]
+            leading-[1.3]
+            font-bold
+            tracking-[0.01em]
+          "
+          style={{
+            color: "var(--mint-dark)",
+          }}
+        >
+          {expert.name}
+        </p>
+      </div>
+
+      {/* DESIGNATION */}
+      <p
+        className="
+        mt-1.5
+        text-[9px]
+        leading-[1.55]
+        font-semibold
+        max-w-[170px]
+      "
+      style={{
+        color: "var(--text-soft)",
+      }}
+      >
+        {expert.role}
+      </p>
+
+      {/* PLACE */}
+      <p
+        className="
+          mt-1.5
+          text-[9px]
+          leading-[1.55]
+          font-semibold
+          max-w-[170px]
+        "
+        style={{
+          color: "var(--text-soft)",
+        }}
+      >
+        {expert.place}
+      </p>
+    </div>
+  ))}
+</div>
+
+    {/* ─── DESCRIPTION ─── */}
+    <div
+      className="
+        px-10
+        py-12
+        bg-white
+      "
+    >
+
+      <div className="max-w-[980px] mx-auto text-center">
+
         <div
           className="
-            relative
-            overflow-hidden
-            h-[560px]
+            inline-flex
+            items-center
+            justify-center
+            h-[25px]
+            rounded-full
+            px-3
+            mb-4
+          "
+          style={{
+            background: "var(--sage)",
+            color: "var(--forest)",
+            fontSize: 7,
+            fontWeight: 900,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+          }}
+        >
+          Guided By Nutrition Expertise
+        </div>
+
+        <h2
+          className="
+            text-[40px]
+            leading-[1.05]
+            tracking-[-0.03em]
+            font-black
+          "
+          style={{
+            color: "var(--text)",
+          }}
+        >
+          Guided by experience.
+          <br />
+
+          Driven by purpose.
+        </h2>
+
+        <p
+          className="
+            mt-5
+            text-[14px]
+            leading-[2]
+            max-w-[820px]
+            mx-auto
+            font-medium
+          "
+          style={{
+            color: "var(--text-soft)",
+          }}
+        >
+
+          ReeStore is powered by experienced nutritionists,
+          wellness professionals and clinical experts who
+          simplify better health decisions through curated
+          wellness guidance, transparent education and
+          evidence-backed product selection.
+        </p>
+
+        {/* EXPERTISE */}
+        <div
+          className="
+            grid
+            grid-cols-4
+            gap-5
+            mt-8
+            max-w-[820px]
+            mx-auto
           "
         >
 
-          {/* TOP CURVE */}
-          <div
-            className="
-              absolute
-              top-0
-              left-[-10%]
-              w-[120%]
-              h-[170px]
-              z-30
-              pointer-events-none
-            "
-            style={{
-              background: "var(--white)",
-              borderBottomLeftRadius: "50% 100%",
-              borderBottomRightRadius: "50% 100%",
-            }}
-          />
+          {[
+            {
+              icon: ShieldCheck,
+              text: "Clinical Dietitian",
+            },
+            {
+              icon: Leaf,
+              text: "Sports Nutrition Specialist",
+            },
+            {
+              icon: HeartHandshake,
+              text: "Yoga & Lifestyle Expert",
+            },
+            {
+              icon: Eye,
+              text: "Behavioural Wellness Coach",
+            },
+          ].map((item, i) => (
 
-          {/* BOTTOM CURVE */}
-          <div
-            className="
-              absolute
-              bottom-0
-              left-[-10%]
-              w-[120%]
-              h-[170px]
-              z-30
-              pointer-events-none
-            "
-            style={{
-              background: "var(--white)",
-              borderTopLeftRadius: "50% 100%",
-              borderTopRightRadius: "50% 100%",
-            }}
-          />
+            <div
+              key={i}
+              className="
+                flex
+                items-start
+                justify-center
+                gap-2.5
+              "
+            >
 
-          {/* FLOATING TRACK */}
-          <div
+              <item.icon
+                className="
+                  w-[18px]
+                  h-[18px]
+                  shrink-0
+                  mt-0.5
+                "
+                style={{
+                  color: "var(--mint-dark)",
+                }}
+              />
+
+              <p
+                className="
+                  text-[11px]
+                  leading-[1.5]
+                  font-semibold
+                  text-left
+                "
+                style={{
+                  color: "var(--text)",
+                }}
+              >
+                {item.text}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* BUTTONS */}
+        <div className="flex items-center justify-center gap-4 mt-9">
+
+          <Link
+            href="/store"
             className="
-              absolute
-              left-0
-              top-1/2
-              -translate-y-1/2
-              flex
+              rs-btn-outline
+              h-[48px]
+              px-8
+              rounded-[14px]
+              font-bold
+              text-[14px]
+              inline-flex
               items-center
-              gap-10
-              w-max
-              will-change-transform
-              animate-[expertScroll_28s_linear_infinite]
+              justify-center
+              gap-3
             "
           >
 
-{[...experts, ...experts].map((expert, index) => {
-const translateY = "translate-y-[40px]";
-const scale = "scale-[1]";
-const opacity = "opacity-100";
+            Shop Now
 
-              return (
-
-                <div
-                  key={index}
-                  className={`
-                    relative
-                    shrink-0
-                    transition-all
-                    duration-700
-                    ease-out
-                    ${translateY}
-                    ${scale}
-                    ${opacity}
-                  `}
-                >
-
-                  {/* PURE IMAGE */}
-                  <div
-                    className={`
-                      relative
-                      shrink-0
-                      overflow-hidden
-                      transition-all
-                      duration-700
-                      ease-out
-
-                      w-[380px] h-[520px]
-                    `}
-                  >
-
-                    <Image
-                      src={expert.image}
-                      alt={expert.name}
-                      fill
-                      className="
-                        object-contain
-                        object-center
-                        transition-transform
-                        duration-1000
-                        hover:scale-[1.02]
-                      "
-                    />
-
-                    {/* CINEMATIC OVERLAY */}
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(to top, rgba(6,21,38,0.45), transparent 60%)",
-                      }}
-                    />
-
-                    {/* TEXT */}
-                    <div className="absolute bottom-0 left-0 p-6">
-
-                      <h3
-                        className="
-                          text-[24px]
-                          leading-[1]
-                          font-black
-                        "
-                        style={{
-                          color: "white",
-                        }}
-                      >
-                        {expert.name}
-                      </h3>
-
-                      <p
-                        className="
-                          mt-2
-                          text-[13px]
-                          font-semibold
-                        "
-                        style={{
-                          color: "rgba(255,255,255,0.84)",
-                        }}
-                      >
-                        {expert.role}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* ─── DESCRIPTION ─── */}
-        <div
-          className="
-            px-10
-            py-10
-            bg-white
-          "
-        >
-
-          <div className="max-w-[980px] mx-auto text-center">
-
-            <div
-              className="
-                inline-flex
-                items-center
-                justify-center
-                h-[25px]
-                rounded-full
-                px-3
-                mb-4
-              "
+            <ArrowRight
+              className="w-4 h-4"
               style={{
-                background: "var(--sage)",
-                color: "var(--forest)",
-                fontSize: 7,
-                fontWeight: 900,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
+                color: "var(--mint-dark)",
               }}
-            >
-              Guided By Nutrition Expertise
-            </div>
+            />
+          </Link>
 
-            <h2
-              className="
-                text-[40px]
-                leading-[1.05]
-                tracking-[-0.03em]
-                font-black
-              "
-              style={{
-                color: "var(--text)",
-              }}
-            >
-              Guided by experience.
-              <br />
-
-              Driven by purpose.
-            </h2>
-
-            <p
-              className="
-                mt-5
-                text-[14px]
-                leading-[2]
-                max-w-[820px]
-                mx-auto
-                font-medium
-              "
-              style={{
-                color: "var(--text-soft)",
-              }}
-            >
-
-              ReeStore is powered by experienced nutritionists,
-              wellness professionals and clinical experts who
-              simplify better health decisions through curated
-              wellness guidance, transparent education and
-              evidence-backed product selection.
-            </p>
-
-            {/* EXPERTISE */}
-            <div
-              className="
-                grid
-                grid-cols-4
-                gap-5
-                mt-8
-                max-w-[820px]
-                mx-auto
-              "
-            >
-
-              {[
-                {
-                  icon: ShieldCheck,
-                  text: "Clinical Dietitian",
-                },
-                {
-                  icon: Leaf,
-                  text: "Sports Nutrition Specialist",
-                },
-                {
-                  icon: HeartHandshake,
-                  text: "Yoga & Lifestyle Expert",
-                },
-                {
-                  icon: Eye,
-                  text: "Behavioural Wellness Coach",
-                },
-              ].map((item, i) => (
-
-                <div
-                  key={i}
-                  className="
-                    flex
-                    items-start
-                    justify-center
-                    gap-2.5
-                  "
-                >
-
-                  <item.icon
-                    className="
-                      w-[18px]
-                      h-[18px]
-                      shrink-0
-                      mt-0.5
-                    "
-                    style={{
-                      color: "var(--mint-dark)",
-                    }}
-                  />
-
-                  <p
-                    className="
-                      text-[11px]
-                      leading-[1.5]
-                      font-semibold
-                      text-left
-                    "
-                    style={{
-                      color: "var(--text)",
-                    }}
-                  >
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* BUTTONS */}
-            <div className="flex items-center justify-center gap-4 mt-9">
-
-              <Link
-                href="/store"
-                className="
-                  rs-btn-outline
-                  h-[48px]
-                  px-8
-                  rounded-[14px]
-                  font-bold
-                  text-[14px]
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-3
-                "
-              >
-
-                Shop Now
-
-                <ArrowRight
-                  className="w-4 h-4"
-                  style={{
-                    color: "var(--mint-dark)",
-                  }}
-                />
-              </Link>
-
-              <Link
-                href="/store"
-                className="
-                  rs-btn-outline
-                  h-[48px]
-                  px-8
-                  rounded-[14px]
-                  font-bold
-                  text-[14px]
-                  inline-flex
-                  items-center
-                  justify-center
-                "
-              >
-                Explore Products
-              </Link>
-            </div>
-          </div>
+          <Link
+            href="/store"
+            className="
+              rs-btn-outline
+              h-[48px]
+              px-8
+              rounded-[14px]
+              font-bold
+              text-[14px]
+              inline-flex
+              items-center
+              justify-center
+            "
+          >
+            Explore Products
+          </Link>
         </div>
       </div>
-    );
-  })()}
+    </div>
+  </div>
 </section>
       </main>
     </>
