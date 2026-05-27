@@ -163,10 +163,100 @@ export default function CartDrawer() {
             {/* FOOTER */}
             {items.length > 0 && (
               <div className="border-t border-black/5 px-6 py-6 space-y-5">
-                <div className="flex items-center justify-between">
-                  <span className="text-black/50">Subtotal</span>
-                  <span className="text-3xl font-bold">₹ {Math.round(subtotal)}</span>
-                </div>
+                {/* SUBTOTAL */}
+<div className="flex items-center justify-between">
+  <span className="text-black/50">Subtotal</span>
+  <span className="text-3xl font-bold">
+    ₹ {Math.round(subtotal)}
+  </span>
+</div>
+
+{/* FREE SHIPPING PROGRESS */}
+<div
+  className="
+    rounded-[24px]
+    border
+    border-black/5
+    bg-[#f7fffd]
+    p-4
+  "
+>
+
+  {/* TEXT */}
+  {subtotal < 1000 ? (
+
+    <p
+      className="
+        text-[13px]
+        leading-[1.7]
+        font-semibold
+        text-black/70
+        mb-3
+      "
+    >
+      Add{" "}
+      <span className="text-[#0d5c4d] font-black">
+        ₹ {1000 - Math.round(subtotal)}
+      </span>{" "}
+      more to unlock{" "}
+      <span className="text-[#0d5c4d] font-black">
+        FREE delivery
+      </span>
+      . Orders below ₹1000 outside Mumbai will have a ₹150 delivery charge.
+    </p>
+
+  ) : (
+
+    <p
+      className="
+        text-[13px]
+        leading-[1.7]
+        font-bold
+        text-[#0d5c4d]
+        mb-3
+      "
+    >
+      🎉 You Unclocked FREE Delivery.
+    </p>
+  )}
+
+  {/* PROGRESS BAR */}
+  <div
+    className="
+      h-[10px]
+      rounded-full
+      overflow-hidden
+      bg-black/5
+    "
+  >
+
+    <div
+      className="
+        h-full
+        rounded-full
+        transition-all
+        duration-500
+      "
+      style={{
+        width: `${Math.min((subtotal / 1000) * 100, 100)}%`,
+        background:
+          "linear-gradient(90deg,#0d5c4d 0%, #00b894 100%)",
+      }}
+    />
+  </div>
+
+  {/* LABELS */}
+  <div className="flex items-center justify-between mt-2">
+
+    <span className="text-[11px] text-black/40 font-medium">
+      ₹0
+    </span>
+
+    <span className="text-[11px] text-[#0d5c4d] font-bold">
+      ₹1000 Free Delivery
+    </span>
+  </div>
+</div>
 
                 <a
                   href={checkoutUrl}

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import {
@@ -7,8 +9,14 @@ import {
   Leaf,
 } from "lucide-react";
 
+import {
+  useEffect,
+  useState,
+} from "react";
+
 import { shopifyFetch } from "@/lib/shopify";
 import { getProductQuery } from "@/lib/queries";
+
 import AddToCartButton from "@/components/cart/add-to-cart-button";
 import ProductTabs from "@/components/product/product-tabs";
 
@@ -18,20 +26,91 @@ interface Props {
   }>;
 }
 
-export default async function ProductPage({
+export default function ProductPage({
   params,
 }: Props) {
 
-  const { handle } = await params;
+  const [resolvedParams, setResolvedParams] =
+    useState<any>(null);
 
-  const res = await shopifyFetch({
-    query: getProductQuery,
-    variables: { handle },
-  });
+  const [product, setProduct] =
+    useState<any>(null);
 
-  const product = res.data.product;
+  const [loading, setLoading] =
+    useState(true);
+
+  /* DELIVERY */
+  const [pincode, setPincode] =
+    useState("");
+
+  const [deliveryMessage, setDeliveryMessage] =
+    useState("");
+
+  useEffect(() => {
+
+    params.then(async (data) => {
+
+      setResolvedParams(data);
+
+      const res = await shopifyFetch({
+        query: getProductQuery,
+        variables: {
+          handle: data.handle,
+        },
+      });
+
+      setProduct(res.data.product);
+
+      setLoading(false);
+    });
+
+  }, [params]);
+
+  const mumbaiPrefixes = [
+    "400",
+  ];
+
+  const checkDelivery = () => {
+
+    if (!pincode || pincode.length < 6) {
+
+      setDeliveryMessage(
+        "Please enter a valid 6-digit pincode."
+      );
+
+      return;
+    }
+
+    const isMumbai =
+      mumbaiPrefixes.some((prefix) =>
+        pincode.startsWith(prefix)
+      );
+
+    if (isMumbai) {
+
+      setDeliveryMessage(
+        "✅ Standard delivery available in Mumbai. Estimated delivery: 1-3 business days."
+      );
+
+    } else {
+
+      setDeliveryMessage(
+        "🚚 Delivery available outside Mumbai. Orders below ₹1000 will incur a ₹150 delivery charge."
+      );
+    }
+  };
+
+  if (loading) {
+
+    return (
+      <div className="pt-32 px-6">
+        Loading...
+      </div>
+    );
+  }
 
   if (!product) {
+
     return (
       <div className="pt-32 px-6">
         Product not found
@@ -39,9 +118,11 @@ export default async function ProductPage({
     );
   }
 
-  const variant = product.variants?.edges?.[0]?.node;
+  const variant =
+    product.variants?.edges?.[0]?.node;
 
-  const price = variant?.price?.amount;
+  const price =
+    variant?.price?.amount;
 
   const comparePrice =
     variant?.compareAtPrice?.amount;
@@ -179,7 +260,6 @@ export default async function ProductPage({
                       mb-1.5
                     "
                   >
-
                     Delivery Availability
                   </p>
 
@@ -191,7 +271,6 @@ export default async function ProductPage({
                       text-black
                     "
                   >
-
                     Check delivery to your area
                   </h3>
                 </div>
@@ -201,6 +280,10 @@ export default async function ProductPage({
 
                   <input
                     type="text"
+                    value={pincode}
+                    onChange={(e) =>
+                      setPincode(e.target.value)
+                    }
                     placeholder="Enter Pincode"
                     className="
                       flex-1
@@ -217,6 +300,7 @@ export default async function ProductPage({
                   />
 
                   <button
+                    onClick={checkDelivery}
                     className="
                       px-5
                       rounded-full
@@ -228,7 +312,6 @@ export default async function ProductPage({
                       transition
                     "
                   >
-
                     Check
                   </button>
                 </div>
@@ -260,7 +343,6 @@ export default async function ProductPage({
                         shrink-0
                       "
                     >
-
                       🚚
                     </div>
 
@@ -274,21 +356,20 @@ export default async function ProductPage({
                           mb-1
                         "
                       >
-
-                        Fast delivery available
+                        Delivery Information
                       </p>
 
                       <p
                         className="
-                          mt-4
+                          mt-2
                           text-[13px]
                           leading-[1.85]
                           font-medium
                           text-black/60
                         "
                       >
-
-                        Most metro cities delivered within 2-5 business days.
+                        {deliveryMessage ||
+                          "Most metro cities delivered within 2-5 business days."}
                       </p>
                     </div>
                   </div>
@@ -323,7 +404,6 @@ export default async function ProductPage({
                 w-fit
               "
             >
-
               Premium Wellness
             </div>
 
@@ -339,7 +419,6 @@ export default async function ProductPage({
                 tracking-[-0.03em]
               "
             >
-
               {product.title}
             </h1>
 
@@ -392,7 +471,6 @@ export default async function ProductPage({
                   font-bold
                 "
               >
-
                 ₹ {Math.round(Number(price))}
               </span>
 
@@ -405,7 +483,6 @@ export default async function ProductPage({
                     line-through
                   "
                 >
-
                   ₹ {Math.round(Number(comparePrice))}
                 </span>
               )}
@@ -424,53 +501,28 @@ export default async function ProductPage({
               "
             >
 
-              <div
-                className="
-                  bg-[#f7fffd]
-                  border
-                  border-black/5
-                  rounded-full
-                  px-3
-                  py-1.5
-                  text-xs
-                  font-medium
-                "
-              >
+              {[
+                "High Protein",
+                "Clean Ingredients",
+                "Everyday Wellness",
+              ].map((item) => (
 
-                High Protein
-              </div>
-
-              <div
-                className="
-                  bg-[#f7fffd]
-                  border
-                  border-black/5
-                  rounded-full
-                  px-3
-                  py-1.5
-                  text-xs
-                  font-medium
-                "
-              >
-
-                Clean Ingredients
-              </div>
-
-              <div
-                className="
-                  bg-[#f7fffd]
-                  border
-                  border-black/5
-                  rounded-full
-                  px-3
-                  py-1.5
-                  text-xs
-                  font-medium
-                "
-              >
-
-                Everyday Wellness
-              </div>
+                <div
+                  key={item}
+                  className="
+                    bg-[#f7fffd]
+                    border
+                    border-black/5
+                    rounded-full
+                    px-3
+                    py-1.5
+                    text-xs
+                    font-medium
+                  "
+                >
+                  {item}
+                </div>
+              ))}
             </div>
 
             {/* CTA */}
@@ -506,220 +558,8 @@ export default async function ProductPage({
                   transition
                 "
               >
-
                 Buy Now
               </button>
-            </div>
-          </div>
-        </div>
-
-        {/* FEATURES */}
-        <div
-          className="
-            mt-6
-            md:mt-8
-            grid
-            grid-cols-1
-            sm:grid-cols-3
-            gap-3
-          "
-        >
-
-          {/* QUALITY */}
-          <div
-            className="
-              flex
-              items-center
-              gap-3
-              bg-[#f7fffd]
-              border
-              border-black/5
-              rounded-[18px]
-              px-4
-              py-4
-            "
-          >
-
-            <div
-              className="
-                w-10
-                h-10
-                rounded-xl
-                bg-[var(--sage)]
-                flex
-                items-center
-                justify-center
-                shrink-0
-              "
-            >
-
-              <ShieldCheck
-                className="
-                  w-5
-                  h-5
-                  text-[var(--mint-dark)]
-                "
-              />
-            </div>
-
-            <div>
-
-              <h3
-                className="
-                  text-[17px]
-                  leading-[1.3]
-                  font-black
-                  mb-1
-                "
-              >
-
-                Quality Checked
-              </h3>
-
-              <p
-                className="
-                  mt-4
-                  text-[13px]
-                  leading-[1.85]
-                  font-medium
-                  text-black/50
-                "
-              >
-
-                Premium ingredients & strict compliance standards.
-              </p>
-            </div>
-          </div>
-
-          {/* DELIVERY */}
-          <div
-            className="
-              flex
-              items-center
-              gap-3
-              bg-[#f7fffd]
-              border
-              border-black/5
-              rounded-[18px]
-              px-4
-              py-4
-            "
-          >
-
-            <div
-              className="
-                w-10
-                h-10
-                rounded-xl
-                bg-[var(--sage)]
-                flex
-                items-center
-                justify-center
-                shrink-0
-              "
-            >
-
-              <Truck
-                className="
-                  w-5
-                  h-5
-                  text-[var(--mint-dark)]
-                "
-              />
-            </div>
-
-            <div>
-
-              <h3
-                className="
-                  text-[17px]
-                  leading-[1.3]
-                  font-black
-                  mb-1
-                "
-              >
-
-                Fast Delivery
-              </h3>
-
-              <p
-                className="
-                  mt-4
-                  text-[13px]
-                  leading-[1.85]
-                  font-medium
-                  text-black/50
-                "
-              >
-
-                Reliable shipping across India.
-              </p>
-            </div>
-          </div>
-
-          {/* WELLNESS */}
-          <div
-            className="
-              flex
-              items-center
-              gap-3
-              bg-[#f7fffd]
-              border
-              border-black/5
-              rounded-[18px]
-              px-4
-              py-4
-            "
-          >
-
-            <div
-              className="
-                w-10
-                h-10
-                rounded-xl
-                bg-[var(--sage)]
-                flex
-                items-center
-                justify-center
-                shrink-0
-              "
-            >
-
-              <Leaf
-                className="
-                  w-5
-                  h-5
-                  text-[var(--mint-dark)]
-                "
-              />
-            </div>
-
-            <div>
-
-              <h3
-                className="
-                  text-[17px]
-                  leading-[1.3]
-                  font-black
-                  mb-1
-                "
-              >
-
-                Wellness Focused
-              </h3>
-
-              <p
-                className="
-                  mt-4
-                  text-[13px]
-                  leading-[1.85]
-                  font-medium
-                  text-black/50
-                "
-              >
-
-                Designed for modern healthy lifestyles.
-              </p>
             </div>
           </div>
         </div>

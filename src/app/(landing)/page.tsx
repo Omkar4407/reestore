@@ -176,7 +176,7 @@ export default function LandingPage() {
               >
                 {[
                   { icon: ShieldCheck, title: "Curated with care" },
-                  { icon: ShoppingBasket, title: "Expert reviewed" },
+                  { icon: ShoppingBasket, title: "Reviewed by experts" },
                   { icon: Eye, title: "Transparent information" },
                   { icon: HeartHandshake, title: "Part of your health journey" },
                 ].map((item, index) => (
@@ -248,7 +248,7 @@ export default function LandingPage() {
               >
                 {[
                   { icon: ShieldCheck, title: "Curated with care" },
-                  { icon: ShoppingBasket, title: "Expert reviewed" },
+                  { icon: ShoppingBasket, title: "Reviewed by experts" },
                   { icon: Eye, title: "Transparent info" },
                   { icon: HeartHandshake, title: "Health journey" },
                 ].map((item, index) => (
@@ -708,7 +708,6 @@ export default function LandingPage() {
                       <div className="relative w-[120px] h-[90px] flex items-center justify-center">
                         <Image src={item.logo} alt={item.title} fill sizes="120px" className="object-contain object-center" />
                       </div>
-                      <h3 className="mt-4 text-[24px] leading-[1] font-black min-h-[30px]" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
                       <p className="mt-3 text-[14px] leading-[1.8] font-semibold max-w-[180px] min-h-[78px] flex items-start justify-center">{item.text}</p>
                     </div>
                     {i !== 2 && (
@@ -733,7 +732,6 @@ export default function LandingPage() {
                       <Image src={item.logo} alt={item.title} fill sizes="80px" className="object-contain object-center" />
                     </div>
                     <div>
-                      <h3 className="text-[17px] leading-[1.3] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
                       <p className="mt-1 text-[13px] leading-[1.85] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
                     </div>
                   </div>

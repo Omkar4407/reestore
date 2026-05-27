@@ -7,11 +7,11 @@ import {
 } from "framer-motion";
 
 const tabs = [
-  "Description",
-  "Ingredients",
-  "Nutrients",
-  "Usage",
-  "Additional",
+  "Overview",
+  "Ingredients & Science",
+  "Nutrition Facts",
+  "How to Use",
+  "Quality & Compliance",
 ];
 
 interface Props {
@@ -57,18 +57,18 @@ export default function ProductTabs({
 
     switch (activeTab) {
 
-      case "Description":
+      case "Overview":
         return (
           <div
             dangerouslySetInnerHTML={{
               __html:
                 parsed.Description ||
-                "Description coming soon.",
+                "Overview coming soon.",
             }}
           />
         );
 
-      case "Ingredients":
+      case "Ingredients & Science":
         return (
           <div
             dangerouslySetInnerHTML={{
@@ -79,7 +79,7 @@ export default function ProductTabs({
           />
         );
 
-      case "Nutrients":
+      case "Nutrition Facts":
         return (
           <div
             dangerouslySetInnerHTML={{
@@ -90,7 +90,7 @@ export default function ProductTabs({
           />
         );
 
-      case "Usage":
+      case "How to Use":
         return (
           <div
             dangerouslySetInnerHTML={{
@@ -101,7 +101,7 @@ export default function ProductTabs({
           />
         );
 
-      case "Additional":
+      case "Quality & Compliance":
         return (
           <div
             dangerouslySetInnerHTML={{
