@@ -9,6 +9,7 @@ interface CartItem {
     title: string;
     product: {
       title: string;
+      vendor?: string;
       featuredImage?: {
         url: string;
       };

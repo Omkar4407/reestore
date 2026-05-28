@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { use } from "react";
 
 import {
   Star,
@@ -30,8 +31,6 @@ export default function ProductPage({
   params,
 }: Props) {
 
-  const [resolvedParams, setResolvedParams] =
-    useState<any>(null);
 
   const [product, setProduct] =
     useState<any>(null);
@@ -46,25 +45,55 @@ export default function ProductPage({
   const [deliveryMessage, setDeliveryMessage] =
     useState("");
 
-  useEffect(() => {
 
-    params.then(async (data) => {
 
-      setResolvedParams(data);
+  /* IMAGE STATE */
+const [selectedImage, setSelectedImage] =
+useState<string | null>(null);
+
+const resolvedParams = use(params);
+
+useEffect(() => {
+
+  async function fetchProduct() {
+
+    try {
 
       const res = await shopifyFetch({
         query: getProductQuery,
         variables: {
-          handle: data.handle,
+          handle: resolvedParams.handle,
         },
       });
 
-      setProduct(res.data.product);
+      const fetchedProduct =
+        res?.data?.product;
+
+      if (!fetchedProduct) {
+
+        setLoading(false);
+        return;
+      }
+
+      setProduct(fetchedProduct);
+
+      setSelectedImage(
+        fetchedProduct.featuredImage?.url
+      );
 
       setLoading(false);
-    });
 
-  }, [params]);
+    } catch (error) {
+
+      console.error(error);
+
+      setLoading(false);
+    }
+  }
+
+  fetchProduct();
+
+}, [resolvedParams.handle]);
 
   const mumbaiPrefixes = [
     "400",
@@ -153,230 +182,315 @@ export default function ProductPage({
           "
         >
 
-          {/* LEFT */}
-          <div
-            className="
-              lg:sticky
-              lg:top-28
-              flex
-              flex-col
-            "
+
+
+{/* LEFT */}
+<div
+  className="
+    lg:sticky
+    lg:top-28
+    flex
+    flex-col
+  "
+>
+
+  <div
+    className="
+      flex
+      gap-3
+      md:gap-4
+      items-start
+    "
+  >
+
+    {/* VERTICAL THUMBNAILS */}
+    <div
+      className="
+        hidden
+        sm:flex
+        flex-col
+        gap-3
+        w-[90px]
+        md:w-[110px]
+        h-[560px]
+        overflow-y-auto
+        pr-1
+        scrollbar-thin
+      "
+    >
+
+      {product.images.edges.map(
+        (img: any, i: number) => (
+
+          <button
+            key={i}
+            onClick={() =>
+              setSelectedImage(img.node.url)
+            }
+            className={`
+              relative
+              w-full
+              h-[90px]
+              md:h-[110px]
+              rounded-[18px]
+              overflow-hidden
+              border
+              bg-[#f7fffd]
+              shrink-0
+              transition
+              cursor-pointer
+
+              ${
+                selectedImage === img.node.url
+                  ? "border-[var(--mint-dark)] border-2"
+                  : "border-black/5"
+              }
+            `}
           >
 
-            <div className="space-y-3 md:space-y-4">
+            <Image
+              src={img.node.url}
+              alt=""
+              fill
+              unoptimized
+              className="
+                object-contain
+                p-2
+              "
+            />
+          </button>
+        )
+      )}
+    </div>
 
-              {/* MAIN IMAGE */}
-              <div
-                className="
-                  relative
-                  bg-[#d3f7f0]
-                  rounded-[20px]
-                  md:rounded-[32px]
-                  h-[260px]
-                  sm:h-[360px]
-                  md:h-[480px]
-                  lg:h-[560px]
-                  overflow-hidden
-                "
-              >
+    {/* MAIN IMAGE */}
+    <div
+      className="
+        relative
+        flex-1
+        bg-[#d3f7f0]
+        rounded-[24px]
+        md:rounded-[32px]
+        h-[320px]
+        sm:h-[420px]
+        md:h-[560px]
+        overflow-hidden
+      "
+    >
 
-                {product.featuredImage && (
+      {selectedImage && (
 
-                  <Image
-                    src={product.featuredImage.url}
-                    alt={product.title}
-                    fill
-                    unoptimized
-                    className="
-                      object-contain
-                      p-5
-                      md:p-8
-                    "
-                  />
-                )}
-              </div>
+        <Image
+          src={selectedImage}
+          alt={product.title}
+          fill
+          unoptimized
+          className="
+            object-contain
+            p-6
+            md:p-10
+          "
+        />
+      )}
+    </div>
+  </div>
 
-              {/* THUMBNAILS */}
-              <div className="grid grid-cols-4 gap-2 md:gap-3">
+  {/* MOBILE THUMBNAILS */}
+  <div
+    className="
+      sm:hidden
+      flex
+      gap-2
+      overflow-x-auto
+      mt-3
+      pb-1
+    "
+  >
 
-                {product.images.edges
-                  .slice(0, 4)
-                  .map((img: any, i: number) => (
+    {product.images.edges.map(
+      (img: any, i: number) => (
 
-                    <div
-                      key={i}
-                      className="
-                        relative
-                        bg-[#f7fffd]
-                        rounded-[12px]
-                        md:rounded-[18px]
-                        h-[64px]
-                        sm:h-[80px]
-                        md:h-[110px]
-                        overflow-hidden
-                        border
-                        border-black/5
-                      "
-                    >
+        <div
+          key={i}
+          onClick={() =>
+            setSelectedImage(img.node.url)
+          }
+          className={`
+            relative
+            min-w-[72px]
+            h-[72px]
+            rounded-[14px]
+            overflow-hidden
+            border
+            bg-[#f7fffd]
+            shrink-0
+            cursor-pointer
 
-                      <Image
-                        src={img.node.url}
-                        alt=""
-                        fill
-                        unoptimized
-                        className="
-                          object-contain
-                          p-2
-                          md:p-3
-                        "
-                      />
-                    </div>
-                  ))}
-              </div>
+            ${
+              selectedImage === img.node.url
+                ? "border-[var(--mint-dark)] border-2"
+                : "border-black/5"
+            }
+          `}
+        >
 
-              {/* DELIVERY CHECKER */}
-              <div
-                className="
-                  mt-4
-                  bg-[#f7fffd]
-                  border
-                  border-black/5
-                  rounded-[20px]
-                  md:rounded-[22px]
-                  p-4
-                  md:p-5
-                  shadow-[0_10px_30px_rgba(0,0,0,0.03)]
-                "
-              >
+          <Image
+            src={img.node.url}
+            alt=""
+            fill
+            unoptimized
+            className="
+              object-contain
+              p-2
+            "
+          />
+        </div>
+      )
+    )}
+  </div>
 
-                {/* HEADER */}
-                <div className="mb-3 md:mb-4">
+  {/* DELIVERY CHECKER */}
+  <div
+    className="
+      mt-4
+      bg-[#f7fffd]
+      border
+      border-black/5
+      rounded-[20px]
+      md:rounded-[22px]
+      p-4
+      md:p-5
+      shadow-[0_10px_30px_rgba(0,0,0,0.03)]
+    "
+  >
 
-                  <p
-                    className="
-                      text-xs
-                      font-semibold
-                      text-[var(--mint-dark)]
-                      mb-1.5
-                    "
-                  >
-                    Delivery Availability
-                  </p>
+    {/* HEADER */}
+    <div className="mb-3 md:mb-4">
 
-                  <h3
-                    className="
-                      text-[17px]
-                      leading-[1.3]
-                      font-black
-                      text-black
-                    "
-                  >
-                    Check delivery to your area
-                  </h3>
-                </div>
+      <p
+        className="
+          text-xs
+          font-semibold
+          text-[var(--mint-dark)]
+          mb-1.5
+        "
+      >
+        Delivery Availability
+      </p>
 
-                {/* INPUT */}
-                <div className="flex gap-2">
+      <h3
+        className="
+          text-[17px]
+          leading-[1.3]
+          font-black
+          text-black
+        "
+      >
+        Check delivery to your area
+      </h3>
+    </div>
 
-                  <input
-                    type="text"
-                    value={pincode}
-                    onChange={(e) =>
-                      setPincode(e.target.value)
-                    }
-                    placeholder="Enter Pincode"
-                    className="
-                      flex-1
-                      h-11
-                      rounded-full
-                      border
-                      border-black/5
-                      bg-white
-                      px-4
-                      text-sm
-                      outline-none
-                      focus:border-[var(--forest)]
-                    "
-                  />
+    {/* INPUT */}
+    <div className="flex gap-2">
 
-                  <button
-                    onClick={checkDelivery}
-                    className="
-                      px-5
-                      rounded-full
-                      bg-[var(--forest)]
-                      text-white
-                      text-xs
-                      font-semibold
-                      hover:opacity-90
-                      transition
-                    "
-                  >
-                    Check
-                  </button>
-                </div>
+      <input
+        type="text"
+        value={pincode}
+        onChange={(e) =>
+          setPincode(e.target.value)
+        }
+        placeholder="Enter Pincode"
+        className="
+          flex-1
+          h-11
+          rounded-full
+          border
+          border-black/5
+          bg-white
+          px-4
+          text-sm
+          outline-none
+          focus:border-[var(--forest)]
+        "
+      />
 
-                {/* INFO */}
-                <div
-                  className="
-                    mt-3
-                    md:mt-4
-                    rounded-[16px]
-                    md:rounded-[18px]
-                    bg-[var(--sage)]
-                    p-3
-                    md:p-4
-                  "
-                >
+      <button
+        onClick={checkDelivery}
+        className="
+          px-5
+          rounded-full
+          bg-[var(--forest)]
+          text-white
+          text-xs
+          font-semibold
+          hover:opacity-90
+          transition
+        "
+      >
+        Check
+      </button>
+    </div>
 
-                  <div className="flex items-start gap-3">
+    {/* INFO */}
+    <div
+      className="
+        mt-3
+        md:mt-4
+        rounded-[16px]
+        md:rounded-[18px]
+        bg-[var(--sage)]
+        p-3
+        md:p-4
+      "
+    >
 
-                    <div
-                      className="
-                        w-9
-                        h-9
-                        rounded-full
-                        bg-white
-                        flex
-                        items-center
-                        justify-center
-                        shrink-0
-                      "
-                    >
-                      🚚
-                    </div>
+      <div className="flex items-start gap-3">
 
-                    <div>
+        <div
+          className="
+            w-9
+            h-9
+            rounded-full
+            bg-white
+            flex
+            items-center
+            justify-center
+            shrink-0
+          "
+        >
+          🚚
+        </div>
 
-                      <p
-                        className="
-                          font-semibold
-                          text-sm
-                          text-[var(--forest-dark)]
-                          mb-1
-                        "
-                      >
-                        Delivery Information
-                      </p>
+        <div>
 
-                      <p
-                        className="
-                          mt-2
-                          text-[13px]
-                          leading-[1.85]
-                          font-medium
-                          text-black/60
-                        "
-                      >
-                        {deliveryMessage ||
-                          "Most metro cities delivered within 2-5 business days."}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p
+            className="
+              font-semibold
+              text-sm
+              text-[var(--forest-dark)]
+              mb-1
+            "
+          >
+            Delivery Information
+          </p>
+
+          <p
+            className="
+              mt-2
+              text-[13px]
+              leading-[1.85]
+              font-medium
+              text-black/60
+            "
+          >
+            {deliveryMessage ||
+              "Most metro cities delivered within 2-5 business days."}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
           {/* RIGHT */}
           <div

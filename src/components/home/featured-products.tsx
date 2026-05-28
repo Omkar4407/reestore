@@ -111,10 +111,10 @@ export default function FeaturedProducts({
             className="
               relative
               mt-10
-              sm:mt-14
-              h-[140px]
-              sm:h-[200px]
-              lg:h-[240px]
+sm:mt-14
+              h-[180px]
+sm:h-[260px]
+lg:h-[320px]
               overflow-visible
               flex
               items-center
@@ -130,7 +130,7 @@ export default function FeaturedProducts({
                 inset-0
                 bg-white
                 rounded-[20px]
-                h-[200px]
+                h-[130px]
                 sm:rounded-[28px]
                 sm:h-[250px]
               "
@@ -162,10 +162,10 @@ export default function FeaturedProducts({
                 }}
                 className="
                   absolute
-                  -top-8
-                  sm:-top-10
-                  w-[80%]
-                  h-[80%]
+                  -top-14
+sm:-top-16
+w-[100%]
+h-[100%]
                   z-10
                 "
               >
@@ -178,8 +178,7 @@ export default function FeaturedProducts({
                   unoptimized
                   className="
                     object-contain
-                    drop-shadow-[0_30px_40px_rgba(0,0,0,0.18)]
-                  "
+drop-shadow-[0_38px_50px_rgba(0,0,0,0.22)]                  "
                 />
               </motion.div>
             )}
@@ -191,30 +190,12 @@ export default function FeaturedProducts({
               flex
               flex-col
               flex-1
-              pt-4
-              md:pt-5
+              pt-1
+md:pt-2
             "
           >
 
-            {/* RATING */}
-            <div
-              className="
-                flex
-                items-center
-                gap-1
-                text-sm
-                mb-2
-              "
-            >
-
-              <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
-
-              <span className="text-xs sm:text-sm">4.8</span>
-
-              <span className="text-black/40 text-xs sm:text-sm">
-                (42)
-              </span>
-            </div>
+            
 
             {/* TITLE */}
             <div className="min-h-[44px] sm:min-h-[56px]">
@@ -237,7 +218,7 @@ export default function FeaturedProducts({
             </div>
 
             {/* TAG */}
-            <div className="mt-2 mb-3 md:mt-3 md:mb-5">
+            <div className="mt-1 mb-2 md:mt-2 md:mb-4">
 
               <span
                 className="

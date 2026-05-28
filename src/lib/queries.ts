@@ -132,9 +132,12 @@ mutation cartCreate {
 
                 title
 
+
                 product {
 
-                  title
+                  title               
+                  
+                  vendor
 
                   featuredImage {
                     url
@@ -199,9 +202,13 @@ mutation addToCart(
 
                 title
 
+                
+
                 product {
 
                   title
+
+                  vendor
 
                   featuredImage {
                     url
@@ -250,9 +257,13 @@ query getCart($cartId: ID!) {
 
               title
 
+              
+
               product {
 
                 title
+
+                vendor
 
                 featuredImage {
                   url
@@ -316,9 +327,13 @@ mutation updateCartLines(
 
                 title
 
+                
+
                 product {
 
                   title
+
+                  vendor
 
                   featuredImage {
                     url
@@ -377,9 +392,13 @@ mutation removeCartLines(
 
                 title
 
+                
+
                 product {
 
                   title
+
+                  vendor
 
                   featuredImage {
                     url
