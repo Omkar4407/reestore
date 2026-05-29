@@ -35,6 +35,31 @@ export default function Navbar() {
   const [search, setSearch] =
     useState("");
 
+  const [menuItems, setMenuItems] = 
+    useState<any[]>([]);
+
+    useEffect(() => {
+
+      async function loadMenu() {
+    
+        try {
+    
+          const res = await fetch("/api/menu");
+    
+          const data = await res.json();
+    
+          setMenuItems(data);
+    
+        } catch (err) {
+    
+          console.error(err);
+        }
+      }
+    
+      loadMenu();
+    
+    }, []);
+
   const [results, setResults] =
     useState<any[]>([]);
 
@@ -43,6 +68,22 @@ export default function Navbar() {
 
   const menuRef =
     useRef<HTMLDivElement>(null);
+
+    function normalizeShopifyUrl(url: string) {
+
+      if (!url) return "/";
+    
+      try {
+    
+        const parsed = new URL(url);
+    
+        return parsed.pathname;
+    
+      } catch {
+    
+        return url;
+      }
+    }
 
   const handleSearch = async (
     value: string
@@ -156,49 +197,82 @@ export default function Navbar() {
     min-w-0
   "
 >
+{menuItems.map((item) => (
 
-              <Link
-                href="/store"
-                className="ml-auto hover:text-[var(--forest-dark)] transition"
-              >
+<div
+  key={item.title}
+  className="
+    relative
+    group
+  "
+>
 
-                Home
-              </Link>
+  <Link
+    href={normalizeShopifyUrl(item.url)}
+    className="
+      hover:text-[var(--forest-dark)]
+      transition
+    "
+  >
+    {item.title}
+  </Link>
 
-              <Link
-                href="/"
-                className="ml-auto hover:text-[var(--forest-dark)] transition"
-              >
+  {item.items?.length > 0 && (
 
-                Food Products
-              </Link>
+<div
+  className="
+    absolute
+    top-full
+    left-0
+    pt-3
+    opacity-0
+    invisible
+    group-hover:opacity-100
+    group-hover:visible
+    transition-all
+    duration-200
+    z-50
+  "
+>
 
-              <Link
-                href="/"
-                className="ml-auto hover:text-[var(--forest-dark)] transition"
-              >
+  <div
+    className="
+      min-w-[240px]
+      rounded-[22px]
+      bg-white
+      border
+      border-black/5
+      shadow-[0_20px_50px_rgba(0,0,0,0.08)]
+      p-2
+    "
+  >
 
-                Supplements & Nutraceuticals
-              </Link>
+    {item.items.map((child: any) => (
 
-              
-              <Link
-                href="/blogs"
-                className="ml-auto hover:text-[var(--forest-dark)] transition"
-              >
+      <Link
+        key={child.title}
+        href={normalizeShopifyUrl(child.url)}
+        className="
+          block
+          px-4
+          py-3
+          rounded-xl
+          hover:bg-[var(--sage)]
+        "
+      >
+        {child.title}
+      </Link>
 
-                Blogs
-              </Link>
+    ))}
 
-              <Link
-                href="/quality-compliance"
-                className="ml-auto hover:text-[var(--forest-dark)] transition"
-              >
+  </div>
 
-                Quality & Compliance
-              </Link>
-            </nav>
+</div>
 
+)}
+</div>
+))}
+</nav>
             {/* RIGHT ACTIONS */}
             <div className="flex items-center gap-2 sm:gap-3">
 
@@ -492,18 +566,55 @@ export default function Navbar() {
             {/* MOBILE LINKS */}
             <nav className="flex flex-col gap-5 text-[15px] font-medium mb-6">
 
-              <Link href="/" onClick={() => setMobileMenu(false)}>Home</Link>
+  {menuItems.map((item) => (
 
-              <Link href="/" onClick={() => setMobileMenu(false)}>Food Products</Link>
+    <div key={item.title}>
 
-              <Link href="/" onClick={() => setMobileMenu(false)}>Supplements</Link>
+      <Link
+        href={normalizeShopifyUrl(item.url)}
+        onClick={() => setMobileMenu(false)}
+        className="block font-semibold"
+      >
+        {item.title}
+      </Link>
 
-              <Link href="/" onClick={() => setMobileMenu(false)}>Wellness</Link>
+      {item.items?.length > 0 && (
 
-              <Link href="/" onClick={() => setMobileMenu(false)}>Blogs</Link>
+        <div
+          className="
+            pl-4
+            mt-3
+            space-y-3
+            border-l
+            border-black/5
+          "
+        >
 
-              <Link href="/contact-us" onClick={() => setMobileMenu(false)}>Contact</Link>
-            </nav>
+          {item.items.map((child: any) => (
+
+            <Link
+              key={child.title}
+              href={normalizeShopifyUrl(child.url)}
+              onClick={() => setMobileMenu(false)}
+              className="
+                block
+                text-[14px]
+                text-black/65
+                hover:text-[var(--forest-dark)]
+                transition
+              "
+            >
+              {child.title}
+            </Link>
+
+          ))}
+
+        </div>
+      )}
+    </div>
+
+  ))}
+</nav>
 
             {/* MOBILE SEARCH */}
             <div className="relative">

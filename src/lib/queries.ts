@@ -549,3 +549,138 @@ export const getAllBlogsQuery = `
   }
 }
 `;
+
+export const getMainMenuQuery = `
+query GetMainMenu {
+
+  menu(handle: "main-menu") {
+
+    items {
+
+      title
+      url
+      type
+
+      items {
+
+        title
+        url
+        type
+
+        items {
+
+          title
+          url
+          type
+        }
+      }
+    }
+  }
+}
+`;
+
+
+export const getCollectionQuery = `
+query getCollection($handle: String!) {
+
+  collection(handle: $handle) {
+
+    id
+    title
+    description
+
+    products(first: 100) {
+
+      edges {
+
+        node {
+
+          id
+          title
+          handle
+
+          vendor
+          productType
+
+          featuredImage {
+            url
+          }
+
+          images(first: 20) {
+            edges {
+              node {
+                url
+              }
+            }
+          }
+
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+
+          variants(first: 20) {
+
+            edges {
+
+              node {
+
+                id
+                title
+
+                price {
+                  amount
+                  currencyCode
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
+
+export const getAllProductsQuery = `
+query getAllProducts {
+
+  products(first: 250) {
+
+    edges {
+
+      node {
+
+        id
+        title
+        handle
+
+        vendor
+        productType
+
+        featuredImage {
+          url
+        }
+
+        priceRange {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+
+        variants(first: 20) {
+          edges {
+            node {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;

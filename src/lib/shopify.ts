@@ -3,9 +3,12 @@ import {
     addToCartMutation,
     getCartQuery,
     updateCartLinesMutation,
+    getMainMenuQuery,
     removeCartLinesMutation,
+    getCollectionQuery,
+    getAllProductsQuery,
   } from "./queries";
-  
+
   const domain =
     process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!;
   
@@ -142,3 +145,39 @@ import {
   
     return res.data.cartLinesRemove.cart;
   }
+
+
+export async function getMainMenu() {
+
+  const res = await shopifyFetch({
+    query: getMainMenuQuery,
+  });
+
+  return res?.data?.menu?.items || [];
+}
+
+
+export async function getCollection(
+  handle: string
+) {
+
+  const res = await shopifyFetch({
+
+    query: getCollectionQuery,
+
+    variables: {
+      handle,
+    },
+  });
+
+  return res.data.collection;
+}
+
+export async function getAllProducts() {
+
+  const res = await shopifyFetch({
+    query: getAllProductsQuery,
+  });
+
+  return res.data.products.edges;
+}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ICONS } from "@/lib/icons";
 
 import {
   ShieldCheck,
@@ -31,7 +32,7 @@ export default function LandingPage() {
           transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
         }
         .rs-step-icon:hover {
-          background: var(--mint-dark);
+          background: var(--white);
           transform: scale(1.08);
           box-shadow: 0 8px 20px rgba(0,184,148,0.25);
         }
@@ -149,7 +150,7 @@ export default function LandingPage() {
                     <span style={{ color: "var(--mint-dark)" }}>Made simple.</span>
                   </h1>
                   <p className="mt-5 text-[15px] leading-[2] font-semibold max-w-[410px]" style={{ color: "rgba(6,21,38,0.72)" }}>
-                    ReeStore helps you choose curated wellness products with clarity, care and expert guidance.
+                  ReeStore brings curated health and wellness products reviewed for quality, safety, and everyday use, so you can choose with confidence!
                   </p>
                   <div className="flex items-center gap-3 mt-7">
                     <Link
@@ -157,14 +158,15 @@ export default function LandingPage() {
                       className="h-[46px] px-7 rounded-[12px] text-white font-bold text-[13px] inline-flex items-center gap-2.5 transition"
                       style={{ background: "var(--mint-dark)", boxShadow: "0 10px 24px rgba(0,184,148,0.18)" }}
                     >
-                      Shop Now <ArrowRight className="w-3.5 h-3.5" />
+                      Explore ReeStore <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
-                    <button
+                    <Link
+                      href="/store"
                       className="h-[46px] px-7 rounded-[12px] border font-bold text-[13px] inline-flex items-center justify-center transition"
                       style={{ borderColor: "rgba(0,184,148,0.28)", background: "rgba(255,255,255,0.7)", color: "#061526" }}
                     >
                       See How We Choose
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -175,18 +177,35 @@ export default function LandingPage() {
                 style={{ background: "rgba(250,252,245,0.96)", borderColor: "rgba(0,0,0,0.05)" }}
               >
                 {[
-                  { icon: ShieldCheck, title: "Curated with care" },
-                  { icon: ShoppingBasket, title: "Reviewed by experts" },
-                  { icon: Eye, title: "Transparent information" },
-                  { icon: HeartHandshake, title: "Part of your health journey" },
-                ].map((item, index) => (
+  {
+    icon: ICONS.expertReviewed,
+    title: "Expert Reviewed",
+  },
+  {
+    icon: ICONS.qualityChecked,
+    title: "Quality Checked",
+  },
+  {
+    icon: ICONS.transparentLabels,
+    title: "Transparent Labels",
+  },
+  {
+    icon: ICONS.connectedToCare,
+    title: "Connected to Care",
+  },
+].map((item, index) => (
                   <div
                     key={index}
                     className={`flex items-center gap-3 px-7 py-5 ${index !== 3 ? "border-r" : ""}`}
                     style={{ borderColor: "rgba(0,0,0,0.06)" }}
                   >
-                    <item.icon className="w-5 h-5 shrink-0" style={{ color: "var(--mint-dark)" }} />
-                    <p className="text-[13px] leading-[1.45] font-bold" style={{ color: "#061526" }}>{item.title}</p>
+<Image
+  src={item.icon}
+  alt={item.title}
+  width={64}
+  height={64}
+  className="object-contain"
+/>                    <p className="text-[13px] leading-[1.45] font-bold" style={{ color: "#061526" }}>{item.title}</p>
                   </div>
                 ))}
               </div>
@@ -247,18 +266,35 @@ export default function LandingPage() {
                 style={{ background: "rgba(250,252,245,0.96)", borderColor: "rgba(0,0,0,0.05)" }}
               >
                 {[
-                  { icon: ShieldCheck, title: "Curated with care" },
-                  { icon: ShoppingBasket, title: "Reviewed by experts" },
-                  { icon: Eye, title: "Transparent info" },
-                  { icon: HeartHandshake, title: "Health journey" },
-                ].map((item, index) => (
+  {
+    icon: ICONS.expertReviewed,
+    title: "Expert Reviewed",
+  },
+  {
+    icon: ICONS.qualityChecked,
+    title: "Quality Checked",
+  },
+  {
+    icon: ICONS.transparentLabels,
+    title: "Transparent Labels",
+  },
+  {
+    icon: ICONS.connectedToCare,
+    title: "Connected to Care",
+  },
+].map((item, index) => (
                   <div
                     key={index}
                     className={`flex items-center gap-2.5 px-4 py-3.5 ${index % 2 === 0 ? "border-r" : ""} ${index < 2 ? "border-b" : ""}`}
                     style={{ borderColor: "rgba(0,0,0,0.06)" }}
                   >
-                    <item.icon className="w-4 h-4 shrink-0" style={{ color: "var(--mint-dark)" }} />
-                    <p className="text-[11px] leading-[1.4] font-bold" style={{ color: "#061526" }}>{item.title}</p>
+<Image
+  src={item.icon}
+  alt={item.title}
+  width={64}
+  height={64}
+  className="object-contain"
+/>                    <p className="text-[11px] leading-[1.4] font-bold" style={{ color: "#061526" }}>{item.title}</p>
                   </div>
                 ))}
               </div>
@@ -277,23 +313,43 @@ export default function LandingPage() {
                 Why We Exist
               </div>
               <h2 className="text-[28px] sm:text-[34px] leading-[1.04] tracking-[-0.03em] font-black" style={{ color: "var(--text)" }}>
-                Because your health deserves better than guesswork.
+              Health choices shouldn’t be driven by noise.
               </h2>
               <p className="mt-4 text-[13px] leading-[1.85] font-medium max-w-[620px]" style={{ color: "var(--text-muted)" }}>
-                The wellness space is full of noise. We simplify your choices by curating products that are safe, relevant, and aligned with real health needs.
+              The wellness space is crowded with products, claims, and conflicting information. ReeStore simplifies your choices with products curated for quality, relevance, and real health needs.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5 mt-7 md:mt-8">
               {[
-                { icon: Leaf, title: "Too many products", text: "Overwhelming options make it hard to choose.", iconBg: "rgba(0,212,183,0.12)" },
-                { icon: ShieldCheck, title: "Too many claims", text: "Not every claim is backed by science.", iconBg: "rgba(0,212,183,0.18)" },
-                { icon: Eye, title: "Too little guidance", text: "Most people are left to decide alone.", iconBg: "rgba(0,184,148,0.12)" },
-              ].map((item, i) => (
+  {
+    icon: ICONS.tooManyOptions,
+    title: "Too many options",
+    text: "A crowded market makes it difficult to know what is actually worth choosing.",
+    iconBg: "rgba(0,212,183,0.12)"
+  },
+  {
+    icon: ICONS.tooManyClaims,
+    title: "Too many claims",
+    text: "Not every promise is backed by evidence, quality, or real formulation value.",
+    iconBg: "rgba(0,212,183,0.18)"
+  },
+  {
+    icon: ICONS.tooLittleClarity,
+    title: "Too little clarity",
+    text: "Most people are left to decide without the context or guidance they actually need.",
+    iconBg: "rgba(0,184,148,0.12)"
+  },
+].map((item, i) => (
                 <div key={i} className="rs-problem-card rounded-[22px] px-5 py-5 flex items-start gap-4 cursor-default">
-                  <div className="w-[56px] h-[56px] md:w-[64px] md:h-[64px] rounded-full flex items-center justify-center shrink-0" style={{ background: item.iconBg }}>
-                    <item.icon className="w-6 h-6 md:w-7 md:h-7" style={{ color: "var(--mint-dark)" }} />
-                  </div>
+                  <div className="w-[56px] h-[56px] md:w-[64px] md:h-[64px] rounded-full flex items-center justify-center shrink-0">
+                  <Image
+  src={item.icon}
+  alt={item.title}
+  width={64}
+  height={64}
+  className="object-contain"
+/>                  </div>
                   <div>
                     <h3 className="text-[17px] leading-[1.3] font-black" style={{ color: "var(--text)" }}>{item.title}</h3>
                     <p className="mt-3 text-[13px] leading-[1.85] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
@@ -367,6 +423,9 @@ export default function LandingPage() {
         >
           We go beyond the basics.
         </h2>
+        <p className="mt-4 text-[13px] leading-[1.85] font-medium max-w-[620px]" style={{ color: "var(--text-muted)" }}>
+        Every product is checked for what it contains, what it claims, and how safely it fits into real health needs.
+        </p>
 
         {/* STEPS */}
         <div className="mt-7 md:mt-8 overflow-x-auto xl:overflow-visible pb-2 md:pb-0">
@@ -385,27 +444,27 @@ export default function LandingPage() {
           >
 
             {[
-              {
-                icon: HeartHandshake,
-                text: "We review product information",
-              },
-              {
-                icon: Eye,
-                text: "We check labels & claims",
-              },
-              {
-                icon: Leaf,
-                text: "We assess ingredients & formulation",
-              },
-              {
-                icon: ShieldCheck,
-                text: "We verify safety & compliance",
-              },
-              {
-                icon: ShoppingBasket,
-                text: "We approve for listing",
-              },
-            ].map((item, i) => (
+  {
+    icon: ICONS.step1,
+    text: "Category, purpose, and intended use are reviewed.",
+  },
+  {
+    icon: ICONS.step2,
+    text: "Claims, nutrition facts, and key details are assessed.",
+  },
+  {
+    icon: ICONS.step3,
+    text: "Ingredients, dosage, and form are evaluated.",
+  },
+  {
+    icon: ICONS.step4,
+    text: "Usage cautions and compliance basics are verified.",
+  },
+  {
+    icon: ICONS.step5,
+    text: "Only reviewed products move to ReeStore.",
+  },
+].map((item, i) => (
 
               <div
                 key={i}
@@ -445,12 +504,13 @@ export default function LandingPage() {
                     "
                   >
 
-                    <item.icon
-                      className="w-6 h-6 md:w-8 md:h-8"
-                      style={{
-                        color: "var(--mint-dark)",
-                      }}
-                    />
+<Image
+  src={item.icon}
+  alt={`Step ${i + 1}`}
+  width={64}
+  height={64}
+  className="object-contain"
+/>
                   </div>
 
                   {/* TEXT */}
@@ -512,7 +572,7 @@ export default function LandingPage() {
               justify-center
             "
           >
-            Learn More About Our Process
+            View Our Review Process
           </Link>
         </div>
       </div>
@@ -573,9 +633,9 @@ export default function LandingPage() {
         <div className="mt-6 md:mt-7 space-y-4 md:space-y-5">
 
           {[
-            "Quality you can trust",
-            "Information you can understand",
-            "Products that support your goals",
+            "Products you can trust, checked for quality, safety, and relevance.",
+            "Information you can understand, clear details before you choose.",
+            "Choices that support your goals, curated for real wellness needs, not just trends",
           ].map((item, i) => (
 
             <div
@@ -606,18 +666,6 @@ export default function LandingPage() {
                   background: "rgba(255,255,255,0.15)",
                 }}
               >
-
-                <ShieldCheck
-                  className="
-                    w-3
-                    h-3
-                    md:w-3.5
-                    md:h-3.5
-                  "
-                  style={{
-                    color: "var(--white)",
-                  }}
-                />
               </div>
 
               {/* TEXT */}
@@ -655,10 +703,10 @@ export default function LandingPage() {
                   Our Solution
                 </div>
                 <h2 className="text-[28px] sm:text-[34px] leading-[1.04] tracking-[-0.03em] font-black max-w-[520px]" style={{ color: "var(--text)" }}>
-                  That's why we created ReeStore.
+                That’s why ReeStore exists.
                 </h2>
                 <p className="mt-4 text-[13px] leading-[1.85] font-medium max-w-[620px]" style={{ color: "var(--text-muted)" }}>
-                  A curated wellness store where products are selected with expert thinking, clearer information and responsible review — so you can make better everyday health choices.
+                A curated wellness store where supplements and health products are selected with expert thinking, clearer information, and responsible review , so choosing feels simpler, not stressful.
                 </p>
               </div>
 
@@ -667,10 +715,22 @@ export default function LandingPage() {
                 style={{ background: "var(--white)", border: "1px solid var(--border-light)" }}
               >
                 {[
-                  { icon: Leaf, title: "Curated, not crowded", text: "Only relevant and high-quality products make it to our store." },
-                  { icon: HeartHandshake, title: "Expert-led thinking", text: "Nutrition professionals help shape what gets selected." },
-                  { icon: ShieldCheck, title: "Built for clarity", text: "We simplify information so you can choose better." },
-                ].map((item, i) => (
+  {
+    icon: ICONS.curatedNotCrowded,
+    title: "Curated, not crowded",
+    text: "We select relevant supplements and wellness products instead of listing everything."
+  },
+  {
+    icon: ICONS.reviewedWithExpertInputs,
+    title: "Reviewed with Expert inputs",
+    text: "Nutrition professionals help assess product relevance, formulation, and everyday use."
+  },
+  {
+    icon: ICONS.clearerBeforeYouChoose,
+    title: "Clearer Before You Choose",
+    text: "Labels, claims, and product details are simplified so decisions feel easier."
+  },
+].map((item, i) => (
                   <div
                     key={i}
                     className="rs-solution-col px-5 py-5 md:py-6 text-left cursor-default"
@@ -678,8 +738,13 @@ export default function LandingPage() {
                   >
                     <style>{`@media (min-width: 640px) { .solution-item-${i} { border-right: ${i !== 2 ? "1px solid var(--border-light)" : "none"}; border-bottom: none !important; } }`}</style>
                     <div className={`solution-item-${i}`}>
-                      <item.icon className="w-6 h-6 md:w-7 md:h-7" style={{ color: "var(--mint-dark)" }} />
-                      <h3 className="mt-3 md:mt-4 text-[17px] leading-[1.3] font-black" style={{ color: "var(--text)" }}>{item.title}</h3>
+                    <Image
+  src={item.icon}
+  alt={item.title}
+  width={64}
+  height={64}
+  className="object-contain"
+/>                      <h3 className="mt-3 md:mt-4 text-[17px] leading-[1.3] font-black" style={{ color: "var(--text)" }}>{item.title}</h3>
                       <p className="mt-3 text-[13px] leading-[1.85] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
                     </div>
                   </div>
@@ -696,19 +761,32 @@ export default function LandingPage() {
               className="rounded-[24px] md:rounded-[30px] px-5 py-7 md:px-10 md:py-9"
               style={{ background: "var(--sage)" }}
             >
+              <div>
+                <div
+                  className="inline-flex items-center h-[34px] rounded-full px-5 mb-5 md:mb-6"
+                  style={{ background: "white", color: "var(--forest)", fontSize: 9, fontWeight: 900, letterSpacing: "0.22em", textTransform: "uppercase" }}
+                >
+                  CONNECTED HEALTH JOURNEY
+                </div>
+                <h2 className="text-[28px] sm:text-[34px] leading-[1.04] tracking-[-0.03em] font-black max-w-[520px]" style={{ color: "var(--text)" }}>
+                From expert plans to everyday product support.
+                </h2>
+                <p className="mt-4 text-[13px] leading-[1.85] font-medium max-w-[620px]" style={{ color: "var(--text-muted)" }}>
+                ReeStore completes the care journey by connecting expert guidance, daily tracking, and curated wellness products in one ecosystem.                </p>
+              </div>
               {/* DESKTOP: horizontal with arrows */}
-              <div className="hidden md:flex items-center justify-between gap-6">
+              <div className="hidden md:flex items-center mt-4 justify-between gap-6">
                 {[
-                  { logo: "/Reecoach_logo.png", title: "ReeCoach", text: "Expert guidance, care personalized plans." },
-                  { logo: "/Reework_logo.png", title: "ReeWork App", text: "Follow plans, track progress and stay motivated." },
-                  { logo: "/Reestore_logo.png", title: "ReeStore", text: "Curated products to support your health journey." },
+                  { logo: "/Reecoach_logo.png", title: "ReeCoach", text: "Expert-led nutrition care. Dietitians create, review, and guide personalized health plans." },
+                  { logo: "/Reework_logo.png", title: "ReeWork App", text: "Follow plans, track progress. Clients view their plans on the app, tick daily adherence, and stay motivated." },
+                  { logo: "/Reestore_logo.png", title: "ReeStore", text: "Curated product support. Selected supplements and wellness products support the plan beyond consultation." },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-6">
                     <div className="rs-eco-card w-[250px] h-[240px] rounded-[26px] px-6 py-6 text-center flex flex-col items-center justify-start shrink-0">
                       <div className="relative w-[120px] h-[90px] flex items-center justify-center">
                         <Image src={item.logo} alt={item.title} fill sizes="120px" className="object-contain object-center" />
                       </div>
-                      <p className="mt-3 text-[14px] leading-[1.8] font-semibold max-w-[180px] min-h-[78px] flex items-start justify-center">{item.text}</p>
+                      <p className="mt-3 text-[14px] leading-[1.8] font-semibold max-w-[180px] min-h-[78px] flex items-start justify-justified">{item.text}</p>
                     </div>
                     {i !== 2 && (
                       <svg width="110" height="34" viewBox="0 0 110 34" fill="none" className="shrink-0 mt-[-6px]">
@@ -751,19 +829,49 @@ export default function LandingPage() {
               Beyond The Label
             </div>
             <h2 className="text-[28px] sm:text-[34px] leading-[1.04] tracking-[-0.03em] font-black max-w-[400px]" style={{ color: "var(--text)" }}>
-              We look beyond what's written on the label.
+            We check what the label doesn’t explain.
             </h2>
+            <p className="mt-4 text-[13px] leading-[1.85] font-medium max-w-[620px]" style={{ color: "var(--text-muted)" }}>
+            From dosage to ingredient synergy, ReeStore looks at the details that help decide whether a product is relevant, safe, and worth choosing.
+            </p>
 
             {/* DESKTOP: 3-col with SVG lines */}
             <div className="hidden lg:grid relative mt-10 grid-cols-[1fr_460px_1fr] items-center gap-2">
               <div className="space-y-10">
                 {[
-                  { title: "Ingredients", text: "Are they clinically relevant?", line: "M220 28H300V0H360", cy: "0" },
-                  { title: "Dosage", text: "Is it the right amount to make a difference?", line: "M220 28H300V28H360", cy: "28" },
-                  { title: "Certifications", text: "Are they backed by authentic certifications?", line: "M220 28H300V56H360", cy: "56" },
-                ].map((item, i) => (
+  {
+    icon: ICONS.left1,
+    title: "Ingredients & Synergy",
+    text: "Are the ingredients relevant, balanced, and working well together?",
+    line: "M220 28H300V0H360",
+    cy: "0",
+  },
+  {
+    icon: ICONS.left2,
+    title: "Dosage Relevance",
+    text: "Is the amount meaningful for the intended use?",
+    line: "M220 28H300V28H360",
+    cy: "28",
+  },
+  {
+    icon: ICONS.left3,
+    title: "Quality Signals",
+    text: "Are certifications, testing details, or compliance markers available?",
+    line: "M220 28H300V56H360",
+    cy: "56",
+  },
+].map((item, i) => (
                   <div key={i} className="relative min-h-[92px]">
                     <div className="max-w-[220px]">
+                    <div className="mb-4">
+  <Image
+    src={item.icon}
+    alt={item.title}
+    width={78}
+    height={78}
+    className="object-contain"
+  />
+</div>
                       <h3 className="text-[17px] leading-[1.3] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
                       <p className="mt-4 text-[13px] leading-[1.85] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
                     </div>
@@ -776,21 +884,48 @@ export default function LandingPage() {
               </div>
 
               <div className="relative flex justify-center z-20">
-                <Image src="/bottle.png" alt="Supplement Bottle" width={520} height={760} priority className="object-contain pointer-events-none" />
+                <Image src="/bottle-img.png" alt="Supplement Bottle" width={520} height={980} priority className="object-contain pointer-events-none" />
               </div>
 
               <div className="space-y-10">
                 {[
-                  { title: "Form & Source", text: "Does the form used ensure better absorption?", line: "M0 0H60V28H150", cy: "0" },
-                  { title: "Additives", text: "Any unnecessary fillers or harmful additives?", line: "M0 28H60V28H150", cy: "28" },
-                  { title: "Claims", text: "Are the claims supported by real evidence?", line: "M0 56H60V28H150", cy: "56" },
-                ].map((item, i) => (
+  {
+    icon: ICONS.right1,
+    title: "Form & Absorption",
+    text: "Is the form or source suitable for better use by the body?",
+    line: "M0 0H60V28H150",
+    cy: "0",
+  },
+  {
+    icon: ICONS.right2,
+    title: "Additive Profile",
+    text: "Are fillers, colours, sugars, or unnecessary additives kept in check?",
+    line: "M0 28H60V28H150",
+    cy: "28",
+  },
+  {
+    icon: ICONS.right3,
+    title: "Evidence Behind Claims",
+    text: "Are the product claims supported by credible information?",
+    line: "M0 56H60V28H150",
+    cy: "56",
+  },
+].map((item, i) => (
                   <div key={i} className="relative min-h-[92px]">
                     <svg className="absolute top-0 right-[180px] pointer-events-none z-30 overflow-visible" width="160" height="90" viewBox="0 0 160 90" fill="none">
                       <path d={item.line} stroke="rgba(0,184,148,0.25)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                       <circle cx="0" cy={item.cy} r="4.5" fill="var(--mint-dark)" />
                     </svg>
                     <div className="ml-[170px] max-w-[220px]">
+                    <div className="mb-4">
+  <Image
+    src={item.icon}
+    alt={item.title}
+    width={78}
+    height={78}
+    className="object-contain"
+  />
+</div>
                       <h3 className="text-[17px] leading-[1.3] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
                       <p className="mt-4 text-[13px] leading-[1.85] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
                     </div>
@@ -806,14 +941,45 @@ export default function LandingPage() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { title: "Ingredients", text: "Are they clinically relevant?" },
-                  { title: "Form & Source", text: "Better absorption?" },
-                  { title: "Dosage", text: "Right amount to make a difference?" },
-                  { title: "Additives", text: "Any unnecessary fillers?" },
-                  { title: "Certifications", text: "Backed by authentic certifications?" },
-                  { title: "Claims", text: "Supported by real evidence?" },
-                ].map((item, i) => (
+  {
+    icon: ICONS.left1,
+    title: "Ingredients",
+    text: "Are they clinically relevant?"
+  },
+  {
+    icon: ICONS.right1,
+    title: "Form & Source",
+    text: "Better absorption?"
+  },
+  {
+    icon: ICONS.left2,
+    title: "Dosage",
+    text: "Right amount to make a difference?"
+  },
+  {
+    icon: ICONS.right2,
+    title: "Additives",
+    text: "Any unnecessary fillers?"
+  },
+  {
+    icon: ICONS.left3,
+    title: "Certifications",
+    text: "Backed by authentic certifications?"
+  },
+  {
+    icon: ICONS.right3,
+    title: "Claims",
+    text: "Supported by real evidence?"
+  },
+].map((item, i) => (
                   <div key={i} className="rounded-[16px] px-4 py-4 border" style={{ background: "var(--sage)", borderColor: "var(--border-light)" }}>
+                    <Image
+  src={item.icon}
+  alt={item.title}
+  width={64}
+  height={64}
+  className="mb-3 object-contain"
+/>
                     <h3 className="text-[13px] leading-[1.3] font-black" style={{ color: "var(--mint-dark)" }}>{item.title}</h3>
                     <p className="mt-2 text-[11px] leading-[1.7] font-medium" style={{ color: "var(--text-muted)" }}>{item.text}</p>
                   </div>
@@ -869,7 +1035,7 @@ export default function LandingPage() {
 
             {/* EXPERT GRID */}
             {/* ─── EXPERT GRID ─── */}
-<div className="space-y-12 md:space-y-16">
+<div className="space-y-12 md:space-y-16 mb-6">
 
   {/* ───────────────── INTERNAL EXPERTS ───────────────── */}
   <div>
@@ -930,16 +1096,16 @@ export default function LandingPage() {
 
       {[
         {
-          image: "/internal1.jpg",
-          name: "Dr. Sarah Wilson",
-          role: "Clinical Nutrition Lead",
-          place: "(ReeStore Wellness Team)"
+          image: "/naaznin_husein.jpg",
+          name: "Ms. Naaznin Husein",
+          role: "Co-founder",
+          place: "(Reework-ReeCoach, Shamrock Nutrascience Pvt. Ltd)"
         },
         {
-          image: "/internal2.jpg",
-          name: "Dr. Michael Lee",
-          role: "Functional Health Advisor",
-          place: "(ReeStore Wellness Team)"
+          image: "/natalia_pereira.jpeg",
+          name: "Ms. Natalia Pereira",
+          role: "Head",
+          place: "(Strategic Alliances Shamrock Nutrasciences Pvt. Ltd)"
         },
       ].map((expert, index) => (
 
@@ -1222,44 +1388,73 @@ export default function LandingPage() {
   </div>
 </div>
 
+{/* FOOTER */}
+<div
+  className="
+    relative
+    left-1/2
+    right-1/2
+    w-screen
+    -translate-x-1/2
+  "
+  style={{
+    background: "#d3f7f0",
+  }}
+>
             {/* DESCRIPTION */}
-            <div className="px-4 sm:px-10 py-10 md:py-12 bg-white">
               <div className="max-w-[980px] mx-auto text-center">
                 <div
-                  className="inline-flex items-center justify-center h-[34px] rounded-full px-5 mb-5 md:mb-6"
-                  style={{ background: "rgba(211,247,240,0.9)", color: "var(--forest)", fontSize: 9, fontWeight: 900, letterSpacing: "0.22em", textTransform: "uppercase" }}
+                  className="inline-flex items-center justify-center h-[34px] mt-4 rounded-full px-5 mb-5 md:mb-6"
+                  style={{ background: "white", color: "var(--forest)", fontSize: 9, fontWeight: 900, letterSpacing: "0.22em", textTransform: "uppercase" }}
                 >
                   Guided By Nutrition Expertise
                 </div>
                 <h2 className="text-[28px] sm:text-[34px] leading-[1.04] tracking-[-0.03em] font-black" style={{ color: "var(--text)" }}>
-                  Guided by experience.<br />Driven by purpose.
+                  Choose with Clarity.<br />Shop with Confidence.
                 </h2>
                 <p className="mt-4 md:mt-5 text-[13px] leading-[1.85] max-w-[620px] mx-auto font-medium" style={{ color: "var(--text-muted)" }}>
-                  ReeStore is powered by experienced nutritionists, wellness professionals and clinical experts who simplify better health decisions through curated wellness guidance, transparent education and evidence-backed product selection.
+                ReeStore brings together expert-led thinking, transparent product information, and curated wellness choices so that better health decisions feel easier.
                 </p>
 
                 {/* EXPERTISE */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mt-7 md:mt-8 max-w-[820px] mx-auto">
                   {[
-                    { icon: ShieldCheck, text: "Clinical Dietitian" },
-                    { icon: Leaf, text: "Sports Nutrition Specialist" },
-                    { icon: HeartHandshake, text: "Yoga & Lifestyle Expert" },
-                    { icon: Eye, text: "Behavioural Wellness Coach" },
-                  ].map((item, i) => (
+  {
+    icon: ICONS.f1,
+    text: "Qualified Clinical Dietitian",
+  },
+  {
+    icon: ICONS.f2,
+    text: "Sports Nutrition Specialists",
+  },
+  {
+    icon: ICONS.f3,
+    text: "Lifestyle & Wellness Experts",
+  },
+  {
+    icon: ICONS.f4,
+    text: "Behavioural Wellness Coaches",
+  },
+].map((item, i) => (
                     <div key={i} className="flex items-start justify-center gap-2.5">
-                      <item.icon className="w-[18px] h-[18px] md:w-[22px] md:h-[22px] shrink-0 mt-0.5" style={{ color: "var(--mint-dark)" }} />
-                      <p className="text-[11px] leading-[1.5] font-semibold text-left" style={{ color: "var(--text)" }}>{item.text}</p>
+<Image
+  src={item.icon}
+  alt={item.text}
+  width={64}
+  height={64}
+  className="object-contain"
+ />                      <p className="text-[15px] leading-[1.5] font-semibold text-left" style={{ color: "var(--text)" }}>{item.text}</p>
                     </div>
                   ))}
                 </div>
 
                 {/* BUTTONS */}
                 <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-8 md:mt-9">
-                  <Link href="/store" className="rs-btn-outline h-[42px] md:h-[48px] px-6 md:px-8 rounded-[14px] font-bold text-[13px] md:text-[14px] inline-flex items-center justify-center gap-2.5 md:gap-3">
-                    Shop Now <ArrowRight className="w-4 h-4" style={{ color: "var(--mint-dark)" }} />
+                  <Link href="/store" className="rs-btn-outline h-[42px] md:h-[48px] px-6 md:px-8 rounded-[14px] font-bold text-[13px] mb-4 md:text-[14px] inline-flex items-center justify-center gap-2.5 md:gap-3">
+                    Explore ReeStore <ArrowRight className="w-4 h-4" style={{ color: "var(--mint-dark)" }} />
                   </Link>
-                  <Link href="/store" className="rs-btn-outline h-[42px] md:h-[48px] px-6 md:px-8 rounded-[14px] font-bold text-[13px] md:text-[14px] inline-flex items-center justify-center">
-                    Explore Products
+                  <Link href="/store" className="rs-btn-outline h-[42px] md:h-[48px] px-6 md:px-8 rounded-[14px] font-bold text-[13px] mb-4 md:text-[14px] inline-flex items-center justify-center">
+                    Shop Curated Products
                   </Link>
                 </div>
               </div>

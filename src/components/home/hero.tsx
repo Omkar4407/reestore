@@ -15,7 +15,7 @@ export default function Hero() {
 
           {/* HERO IMAGE */}
           <Image
-            src="/main.png"
+            src="/hero.png"
             alt="Reestore Hero"
             fill
             priority

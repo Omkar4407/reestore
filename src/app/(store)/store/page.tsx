@@ -2,7 +2,6 @@ import Hero from "@/components/home/hero";
 import FeaturedProducts from "@/components/home/featured-products";
 import ReviewsSection from "@/components/home/reviews-section";
 import WhyReestore from "@/components/home/why-reestore";
-import AppSection from "@/components/home/app-section";
 
 import { shopifyFetch } from "@/lib/shopify";
 import { getProductsQuery } from "@/lib/queries";
@@ -28,7 +27,6 @@ export default async function HomePage() {
 
         <ReviewsSection />
 
-        <AppSection/>
 
         <WhyReestore />
 
