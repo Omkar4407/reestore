@@ -69,20 +69,35 @@ export default function Navbar() {
   const menuRef =
     useRef<HTMLDivElement>(null);
 
-    function normalizeShopifyUrl(url: string) {
-
+    function normalizeShopifyUrl(
+      url: string,
+      title?: string
+    ) {
       if (!url) return "/";
     
+      let pathname = url;
+    
       try {
-    
-        const parsed = new URL(url);
-    
-        return parsed.pathname;
-    
+        pathname = new URL(url).pathname;
       } catch {
-    
-        return url;
+        pathname = url;
       }
+    
+      if (
+        title?.toLowerCase() === "home" ||
+        pathname === "/"
+      ) {
+        return "/store";
+      }
+    
+      if (
+        pathname ===
+        "/pages/reework-quality-compliance"
+      ) {
+        return "/quality-compliance";
+      }
+    
+      return pathname;
     }
 
   const handleSearch = async (
@@ -207,15 +222,18 @@ export default function Navbar() {
   "
 >
 
-  <Link
-    href={normalizeShopifyUrl(item.url)}
-    className="
-      hover:text-[var(--forest-dark)]
-      transition
-    "
-  >
-    {item.title}
-  </Link>
+<Link
+  href={normalizeShopifyUrl(
+    item.url,
+    item.title
+  )}
+  className="
+    hover:text-[var(--forest-dark)]
+    transition
+  "
+>
+  {item.title}
+</Link>
 
   {item.items?.length > 0 && (
 
@@ -249,19 +267,22 @@ export default function Navbar() {
 
     {item.items.map((child: any) => (
 
-      <Link
-        key={child.title}
-        href={normalizeShopifyUrl(child.url)}
-        className="
-          block
-          px-4
-          py-3
-          rounded-xl
-          hover:bg-[var(--sage)]
-        "
-      >
-        {child.title}
-      </Link>
+<Link
+key={child.title}
+href={normalizeShopifyUrl(
+  child.url,
+  child.title
+)}
+className="
+  block
+  px-4
+  py-3
+  rounded-xl
+  hover:bg-[var(--sage)]
+"
+>
+{child.title}
+</Link>
 
     ))}
 
@@ -570,13 +591,16 @@ export default function Navbar() {
 
     <div key={item.title}>
 
-      <Link
-        href={normalizeShopifyUrl(item.url)}
-        onClick={() => setMobileMenu(false)}
-        className="block font-semibold"
-      >
-        {item.title}
-      </Link>
+<Link
+  href={normalizeShopifyUrl(
+    item.url,
+    item.title
+  )}
+  onClick={() => setMobileMenu(false)}
+  className="block font-semibold"
+>
+  {item.title}
+</Link>
 
       {item.items?.length > 0 && (
 
@@ -592,20 +616,23 @@ export default function Navbar() {
 
           {item.items.map((child: any) => (
 
-            <Link
-              key={child.title}
-              href={normalizeShopifyUrl(child.url)}
-              onClick={() => setMobileMenu(false)}
-              className="
-                block
-                text-[14px]
-                text-black/65
-                hover:text-[var(--forest-dark)]
-                transition
-              "
-            >
-              {child.title}
-            </Link>
+<Link
+key={child.title}
+href={normalizeShopifyUrl(
+  child.url,
+  child.title
+)}
+onClick={() => setMobileMenu(false)}
+className="
+  block
+  text-[14px]
+  text-black/65
+  hover:text-[var(--forest-dark)]
+  transition
+"
+>
+{child.title}
+</Link>
 
           ))}
 

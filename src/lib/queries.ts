@@ -684,3 +684,18 @@ query getAllProducts {
   }
 }
 `;
+
+export const getPageQuery = `
+query GetPage($handle: String!) {
+  page(handle: $handle) {
+    id
+    title
+    body
+    bodySummary
+    seo {
+      title
+      description
+    }
+  }
+}
+`;

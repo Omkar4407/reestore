@@ -7,6 +7,7 @@ import {
     removeCartLinesMutation,
     getCollectionQuery,
     getAllProductsQuery,
+    getPageQuery,
   } from "./queries";
 
   const domain =
@@ -180,4 +181,17 @@ export async function getAllProducts() {
   });
 
   return res.data.products.edges;
+}
+
+export async function getPage(handle: string) {
+  const data = await shopifyFetch({
+    query: getPageQuery,
+    variables: {
+      handle,
+    },
+  });
+
+  console.log("PAGE RESPONSE", data);
+
+  return data?.data?.page;
 }

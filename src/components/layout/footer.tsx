@@ -438,14 +438,6 @@ export default async function Footer() {
 
               <div className="flex flex-col gap-2.5 md:gap-3 text-white/70 text-[13px] leading-[1.85]">
 
-                <Link href="/quality-compliance" className="hover:text-white transition">
-                  Quality & Compliance
-                </Link>
-
-                <Link href="/contact-us" className="hover:text-white transition">
-                  Contact Us
-                </Link>
-
                 <Link href="/privacy-policy" className="hover:text-white transition">
                   Privacy Policy
                 </Link>
@@ -460,6 +452,10 @@ export default async function Footer() {
 
                 <Link href="/shipping-policy" className="hover:text-white transition">
                   Shipping Policy
+                </Link>
+
+                <Link href="/contact-us" className="hover:text-white transition">
+                  Contact Us
                 </Link>
               </div>
             </div>
