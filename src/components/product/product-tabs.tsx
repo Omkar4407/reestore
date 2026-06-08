@@ -19,24 +19,24 @@ interface Props {
 }
 
 function parseTabs(description: string) {
-
   const sections: Record<string, string> = {};
 
-  const regex =
-    /\[TAB:(.*?)\]([\s\S]*?)(?=\[TAB:|$)/g;
+  // Decode HTML entities Shopify may inject
+  const decoded = description
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ");
 
+  const regex = /\[TAB:(.*?)\]([\s\S]*?)(?=\[TAB:|$)/g;
   let match;
 
-  while ((match = regex.exec(description))) {
-
-    const title =
-      match[1].trim();
-
-    const content =
-      match[2]
-        .trim()
-        .replace(/\n\n/g, "<br /><br />")
-        .replace(/\n/g, " ");
+  while ((match = regex.exec(decoded))) {
+    const title = match[1].trim();
+    const content = match[2]
+      .trim()
+      .replace(/\n\n/g, "<br /><br />")
+      .replace(/\n/g, " ");
     sections[title] = content;
   }
 
@@ -48,7 +48,7 @@ export default function ProductTabs({
 }: Props) {
 
   const [activeTab, setActiveTab] =
-    useState("Description");
+    useState("Overview");
 
   const parsed =
     parseTabs(description);
@@ -62,7 +62,7 @@ export default function ProductTabs({
           <div
             dangerouslySetInnerHTML={{
               __html:
-                parsed.Description ||
+                parsed["Overview"] ||
                 "Overview coming soon.",
             }}
           />
@@ -73,7 +73,7 @@ export default function ProductTabs({
           <div
             dangerouslySetInnerHTML={{
               __html:
-                parsed.Ingredients ||
+                parsed["Ingredients & Science"] ||
                 "Ingredients coming soon.",
             }}
           />
@@ -84,7 +84,7 @@ export default function ProductTabs({
           <div
             dangerouslySetInnerHTML={{
               __html:
-                parsed.Nutrients ||
+                parsed["Nutrition Facts"] ||
                 "Nutritional information coming soon.",
             }}
           />
@@ -95,7 +95,7 @@ export default function ProductTabs({
           <div
             dangerouslySetInnerHTML={{
               __html:
-                parsed.Usage ||
+                parsed["Recommendation & Usage"] ||
                 "Usage instructions coming soon.",
             }}
           />
@@ -106,7 +106,7 @@ export default function ProductTabs({
           <div
             dangerouslySetInnerHTML={{
               __html:
-                parsed.Additional ||
+                parsed["Quality and compliance"] ||
                 "Additional information coming soon.",
             }}
           />
@@ -166,18 +166,18 @@ export default function ProductTabs({
 
         {/* SCROLL AREA */}
         <div
-  className="
-    max-h-[320px]
-    md:max-h-[420px]
-    overflow-y-auto
-    overflow-x-hidden
-    custom-scrollbar
-    px-6
-    md:px-8
-    py-5
-    md:py-6
-  "
->
+          className="
+            max-h-[320px]
+            md:max-h-[420px]
+            overflow-y-auto
+            overflow-x-hidden
+            custom-scrollbar
+            px-6
+            md:px-8
+            py-5
+            md:py-6
+          "
+        >
 
           <AnimatePresence mode="wait">
 

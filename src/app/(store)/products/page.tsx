@@ -8,7 +8,7 @@ export default async function AllProductsPage() {
 
   return (
 
-    <section className="pt-36 pb-20 bg-[#fafdfc]">
+    <section className="pt-36 pb-20 bg-[#d3f7f0]">
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-6">
 
